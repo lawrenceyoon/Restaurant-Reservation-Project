@@ -1,0 +1,13 @@
+.Dashboard .btn {
+  background-color: #45b1e8;
+  border: 0;
+  color: #fff;
+}
+
+.Dashboard .next {
+  margin: 0 10px;
+}
+
+.Dashboard .today {
+  background-color: #0fc0fc;
+}
