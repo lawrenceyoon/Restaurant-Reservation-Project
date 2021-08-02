@@ -19,22 +19,26 @@ function update(reservation_id, status) {
     .then((createdRecords) => createdRecords[0]);
 }
 
-function list(reservation_date) {
-  if (!reservation_date) {
-    return knex(tableName)
-      .select('*')
-      .orderBy('reservation_date', 'asc')
-      .orderBy('reservation_time', 'asc')
-      .where({ status: 'booked' })
-      .orWhere({ status: 'seated' });
-  } else {
+function list(query) {
+  if (query.date) {
     return knex(tableName)
       .select('*')
       .orderBy('reservation_time', 'asc')
-      .where('reservation_date', reservation_date)
+      .where('reservation_date', query.date)
       .andWhere({ status: 'booked' })
       .orWhere({ status: 'seated' });
   }
+  if (query.mobile_number) {
+    return knex(tableName)
+      .select('*')
+      .where('mobile_number', 'like', `${query.mobile_number}%`);
+  }
+  return knex(tableName)
+    .select('*')
+    .orderBy('reservation_date', 'asc')
+    .orderBy('reservation_time', 'asc')
+    .where({ status: 'booked' })
+    .orWhere({ status: 'seated' });
 }
 
 module.exports = {

@@ -13,9 +13,9 @@ const NewReservation = () => {
 
   /* ----- state ----- */
   const initialFormState = {
-    first_name: 'test_f_name',
-    last_name: 'test_l_name',
-    mobile_number: '111-222-3333',
+    first_name: '',
+    last_name: '',
+    mobile_number: '',
     // reservation_date: today(),
     reservation_date: today(),
     reservation_time: '18:00:00',
@@ -28,6 +28,17 @@ const NewReservation = () => {
   const [formErrors, setFormErrors] = useState([]);
 
   /* ----- helper functions ----- */
+  // checks if mobile_number is in proper format: all numbers XXX-XXX-XXXX
+  const mobileNumberFormat = () => {
+    let regExp7 = /^\(?([0-9]{3})\)?[-]?([0-9]{4})$/;
+    let regExp10 = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+    let match7 = formData.mobile_number.match(regExp7);
+    let match10 = formData.mobile_number.match(regExp10);
+
+    if (match7 || match10) return true;
+    return false;
+  };
+
   // returns the specific reservation_date as a number example: sun = 0, tues = 2, sat = 6
   const getReservationDay = () => {
     const year = formData.reservation_date.split('-')[0];
@@ -77,12 +88,18 @@ const NewReservation = () => {
 
   // error check, returns an array of errors, or empty array if everything's good
   const formValidation = () => {
+    const mobileNumberFormatCheck = mobileNumberFormat();
     const reservationDateTuesdayCheck = getReservationDay();
     const reservMinusTodayDate = reservationMinusTodayDate();
     const reservationTimeIsValidCheck = reservationTimeIsValid();
 
     const array = [];
 
+    // checks if mobile_number is formatted correctly: XXX-XXX-XXXX
+    if (!mobileNumberFormatCheck)
+      array.push(
+        'The mobile number must be all numbers in format: XXX-XXXX OR XXX-XXX-XXXX'
+      );
     // check if reservation_date is on Tuesday
     if (reservationDateTuesdayCheck === 2)
       array.push('We are closed on Tuesdays. No reservations allowed.');
@@ -120,8 +137,8 @@ const NewReservation = () => {
 
     // handles all form validations, returns an array with errors.
     const runFormValidation = formValidation();
-    setFormErrors(runFormValidation);
 
+    setFormErrors(runFormValidation);
     if (!runFormValidation.length) {
       try {
         const url = 'http://localhost:5000/reservations';

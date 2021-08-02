@@ -56,7 +56,7 @@ function Dashboard() {
       people,
       status,
     }) => (
-      <section key={reservation_id}>
+      <div className="reservation" key={reservation_id}>
         <h3>
           {first_name} {last_name} ID #: {reservation_id}
         </h3>
@@ -69,7 +69,7 @@ function Dashboard() {
             <button type="button">Seat</button>
           </Link>
         ) : null}
-      </section>
+      </div>
     )
   );
 
@@ -125,7 +125,7 @@ function Dashboard() {
   const tablesData = tables.map(
     ({ table_id, table_name, capacity, reservation_id }) => {
       return (
-        <section key={table_id}>
+        <div className="table" key={table_id}>
           <h3>Table Name: {table_name}</h3>
           <p>Table ID: {table_id}</p>
           <p>Capacity: {capacity}</p>
@@ -145,12 +145,10 @@ function Dashboard() {
               </button>
             </div>
           )}
-        </section>
+        </div>
       );
     }
   );
-
-  /* ----- helper functions ----- */
 
   /* ----- event handlers ----- */
   const handleNextButton = () => {

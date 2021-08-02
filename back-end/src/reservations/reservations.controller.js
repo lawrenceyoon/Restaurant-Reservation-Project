@@ -223,7 +223,8 @@ async function update(req, res) {
 }
 
 async function list(req, res) {
-  const data = await service.list(req.query.date);
+  const query = req.query;
+  const data = await service.list(query);
 
   res.json({ data });
 }
