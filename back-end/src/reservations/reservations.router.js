@@ -12,8 +12,6 @@ router.route('/:reservation_id').get(controller.read).all(methodNotAllowed);
 
 router
   .route('/:reservation_id/status')
-  // ADDED FOR TESTING
-  .get(controller.read)
   .put(controller.update)
   .all(methodNotAllowed);
 

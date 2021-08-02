@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import ErrorAlert from '../layout/ErrorAlert';
 // local files
 
-function ReservationSeat() {
+const ReservationSeat = () => {
   /* ----- useHistory, useParams ----- */
   const history = useHistory();
   const { reservation_id } = useParams();
@@ -190,6 +190,6 @@ function ReservationSeat() {
       </form>
     </div>
   );
-}
+};
 
 export default ReservationSeat;

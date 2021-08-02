@@ -7,6 +7,7 @@ import NotFound from './NotFound';
 import NewReservation from '../reservations/NewReservation';
 import ReservationSeat from '../reservations/ReservationSeat';
 import NewTable from '../tables/NewTable';
+import Search from '../search/Search';
 
 /**
  * Defines all the routes for the application.
@@ -15,7 +16,7 @@ import NewTable from '../tables/NewTable';
  *
  * @returns {JSX.Element}
  */
-function Routes() {
+const Routes = () => {
   return (
     <Switch>
       <Route exact={true} path="/">
@@ -33,17 +34,20 @@ function Routes() {
       <Route exact={true} path="/dashboard/:date">
         <Dashboard />
       </Route>
-      <Route exact={true} path={'/dashboard'}>
+      <Route exact={true} path="/dashboard">
         <Dashboard />
       </Route>
       <Route path={'/tables/new'}>
         <NewTable />
+      </Route>
+      <Route path="/search">
+        <Search />
       </Route>
       <Route>
         <NotFound />
       </Route>
     </Switch>
   );
-}
+};
 
 export default Routes;
