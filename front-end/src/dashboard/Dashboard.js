@@ -1,13 +1,14 @@
 // dependencies
 import React, { useEffect, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 // local files
 import './Dashboard.css';
+import Reservation from '../reservations/Reservation';
+import Table from '../tables/Table';
 import { listReservations } from '../utils/api';
 import ErrorAlert from '../layout/ErrorAlert';
 import { today, next, previous } from '../utils/date-time';
 import useQuery from '../utils/useQuery';
-import axios from 'axios';
 
 /**
  * Defines the dashboard page.
@@ -46,32 +47,9 @@ function Dashboard() {
     return () => abortController.abort();
   }
 
-  const reservationsData = reservations.map(
-    ({
-      reservation_id,
-      first_name,
-      last_name,
-      mobile_number,
-      reservation_time,
-      people,
-      status,
-    }) => (
-      <div className="reservation" key={reservation_id}>
-        <h3>
-          {first_name} {last_name} ID #: {reservation_id}
-        </h3>
-        <p>Phone Number: {mobile_number}</p>
-        <p>Reservation Time: {reservation_time}</p>
-        <p>Number of people: {people}</p>
-        <p data-reservation-id-status={reservation_id}>Status: {status}</p>
-        {status === 'booked' ? (
-          <Link to={`/reservations/${reservation_id}/seat`}>
-            <button type="button">Seat</button>
-          </Link>
-        ) : null}
-      </div>
-    )
-  );
+  const reservationsData = reservations.map((reservation) => (
+    <Reservation key={reservation.reservation_id} reservation={reservation} />
+  ));
 
   // tables
   useEffect(() => {
@@ -96,59 +74,9 @@ function Dashboard() {
     return () => abortController.abort();
   }, []);
 
-  /* ----- event handler needs to be before finish button ----- */
-  const handleFinishButton = async (table_id, reservation_id) => {
-    const confirm = window.confirm(
-      'Is this table ready to seat new guests? This cannot be undone.'
-    );
-
-    // if cancel is clicked, do nothing
-    if (!confirm) return;
-    try {
-      // if ok is clicked, delete reservation_id from the table
-      const tableUrl = `http://localhost:5000/tables/${table_id}/seat`;
-      const reservationUrl = `http://localhost:5000/reservations/${reservation_id}/status`;
-      const statusData = {
-        data: {
-          status: 'finished',
-        },
-      };
-
-      await axios.delete(tableUrl);
-      await axios.put(reservationUrl, statusData);
-      history.go(0);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const tablesData = tables.map(
-    ({ table_id, table_name, capacity, reservation_id }) => {
-      return (
-        <div className="table" key={table_id}>
-          <h3>Table Name: {table_name}</h3>
-          <p>Table ID: {table_id}</p>
-          <p>Capacity: {capacity}</p>
-          {!reservation_id ? (
-            <div className="free">
-              <p data-table-id-status={`${table_id}`}>FREE</p>
-            </div>
-          ) : (
-            <div className="occupied">
-              <p data-table-id-status={table_id}>OCCUPIED</p>
-              <button
-                data-table-id-finish={table_id}
-                type="button"
-                onClick={() => handleFinishButton(table_id, reservation_id)}
-              >
-                Finish
-              </button>
-            </div>
-          )}
-        </div>
-      );
-    }
-  );
+  const tablesData = tables.map((table) => (
+    <Table key={table.table_id} table={table} />
+  ));
 
   /* ----- event handlers ----- */
   const handleNextButton = () => {

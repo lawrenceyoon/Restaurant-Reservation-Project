@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 // local files
+import Reservation from '../reservations/Reservation';
 
 const Search = () => {
   /* ----- state ----- */
@@ -25,27 +26,9 @@ const Search = () => {
     }
   };
 
-  const reservationsData = reservations.map(
-    ({
-      reservation_id,
-      first_name,
-      last_name,
-      mobile_number,
-      reservation_time,
-      people,
-      status,
-    }) => (
-      <div className="reservation" key={reservation_id}>
-        <h3>
-          {first_name} {last_name} ID #: {reservation_id}
-        </h3>
-        <p>Phone Number: {mobile_number}</p>
-        <p>Reservation Time: {reservation_time}</p>
-        <p>Number of people: {people}</p>
-        <p data-reservation-id-status={reservation_id}>Status: {status}</p>
-      </div>
-    )
-  );
+  const reservationsData = reservations.map((reservation) => (
+    <Reservation key={reservation.reservation_id} reservation={reservation} />
+  ));
 
   /* ----- render content ----- */
   return (
