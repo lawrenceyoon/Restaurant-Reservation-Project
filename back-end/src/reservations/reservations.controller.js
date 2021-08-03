@@ -168,11 +168,16 @@ function reservationStatusIsOnlyBooked(req, _, next) {
 function reservationStatusIsValid(req, _, next) {
   const { status } = req.body.data;
 
-  if (status === 'booked' || status === 'seated' || status === 'finished')
+  if (
+    status === 'booked' ||
+    status === 'seated' ||
+    status === 'finished' ||
+    status === 'cancelled'
+  )
     next();
   else {
     const error = new Error(
-      `Reservation status is unknown: The reservation status must be 'booked', 'seated', or 'finished'.`
+      `Reservation status is unknown: The reservation status must be 'booked', 'seated', 'finished', or 'cancelled'.`
     );
     error.status = 400;
     throw error;
@@ -216,6 +221,7 @@ async function read(_, res) {
 }
 
 async function update(req, res) {
+  // NEED TO DO VALIDATIONS: BUT CATCH IS: THE REQ.BODY FOR PUT REQUEST CAN BE STATUS OR THE RESERVATION INFORMATION EX) first_name, last_name, etc.
   const { reservation_id } = res.locals.reservation;
   const data = await service.update(reservation_id, req.body.data);
 

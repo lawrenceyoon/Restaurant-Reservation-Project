@@ -1,9 +1,37 @@
 // dependencies
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 // local files
 
 const Reservation = ({ reservation }) => {
+  /* ----- useHistory ----- */
+  const history = useHistory();
+
+  /* ----- event handlers ----- */
+  const handleCancelButton = async (reservation_id) => {
+    const confirm = window.confirm(
+      'Do you want to cancel this reservation? This cannot be undone.'
+    );
+
+    // if cancel is clicked, do nothing
+    if (!confirm) return;
+    // if ok is clicked, set status to cancelled
+    try {
+      const reservationUrl = `http://localhost:5000/reservations/${reservation_id}/status`;
+      const statusData = {
+        data: {
+          status: 'cancelled',
+        },
+      };
+
+      await axios.put(reservationUrl, statusData);
+      history.go(0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   /* ----- render content ----- */
   return (
     <div className="reservation">
@@ -22,6 +50,17 @@ const Reservation = ({ reservation }) => {
           <button type="button">Seat</button>
         </Link>
       ) : null}
+      <br />
+      <Link to={`/reservations/${reservation.reservation_id}/edit`}>
+        <button type="button">Edit</button>
+      </Link>
+      <button
+        data-reservation-id-cancel={reservation.reservation_id}
+        type="button"
+        onClick={() => handleCancelButton(reservation.reservation_id)}
+      >
+        Cancel
+      </button>
     </div>
   );
 };
