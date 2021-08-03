@@ -4,7 +4,7 @@ const hasProperties = require('../errors/hasProperties');
 
 /* ----- VALIDATION MIDDLEWARE ----- */
 // checks if table has these properties
-const hasRequiredProperties = hasProperties(
+const hasRequiredFormProperties = hasProperties(
   'first_name',
   'last_name',
   'mobile_number',
@@ -30,28 +30,52 @@ async function reservationExists(req, res, next) {
   }
 }
 
+// first check req.body (status || form) checks if table has properties
+function checkRequiredProperties(req, res, next) {
+  const { data } = req.body;
+
+  // if data has form data
+  if (Object.keys(data).length > 1) {
+    hasRequiredFormProperties(req, res, next);
+  } else {
+    next();
+  }
+}
+
 // checks if people property is a number
 function peoplePropertyIsNumber(req, _, next) {
-  if (typeof req.body.data.people === 'number') next();
+  const { data } = req.body;
+
+  // ignore if req.body is only status
+  if (Object.keys(data).length === 1) next();
   else {
-    const error = new Error(`people property must be a number!`);
-    error.status = 400;
-    throw error;
+    if (typeof req.body.data.people === 'number') next();
+    else {
+      const error = new Error(`people property must be a number!`);
+      error.status = 400;
+      throw error;
+    }
   }
 }
 
 // checks if reservation_date property is in correct format: YYYY-MM-DD
 function reservationDateIsCorrect(req, _, next) {
-  let regEx = /^\d{4}-\d{2}-\d{2}$/;
-  let stored = req.body.data.reservation_date.match(regEx) != null;
+  const { data } = req.body;
 
-  if (stored) next();
+  // ignore if req.body is only status
+  if (Object.keys(data).length === 1) next();
   else {
-    const error = new Error(
-      `The reservation_date must be in correct format: YYYY-MM-DD`
-    );
-    error.status = 400;
-    throw error;
+    let regEx = /^\d{4}-\d{2}-\d{2}$/;
+    let stored = req.body.data.reservation_date.match(regEx) != null;
+
+    if (stored) next();
+    else {
+      const error = new Error(
+        `The reservation_date must be in correct format: YYYY-MM-DD`
+      );
+      error.status = 400;
+      throw error;
+    }
   }
 }
 
@@ -101,19 +125,25 @@ function reservationDateIsFuture(req, _, next) {
 
 // checks if reservation_time property is correctly formatted: HH:MM:SS or HH:MM
 function reservationTimeIsCorrectFormat(req, _, next) {
-  let regEx = /^(?:2[0-3]|[01]?[0-9]):[0-5][0-9]:[0-5][0-9]$/;
-  let regEx2 = /^(?:2[0-3]|[01]?[0-9]):[0-5][0-9]$/;
+  const { data } = req.body;
 
-  let stored = req.body.data.reservation_time.match(regEx) != null;
-  let stored2 = req.body.data.reservation_time.match(regEx2) != null;
-
-  if (stored || stored2) next();
+  // ignore if req.body is only status
+  if (Object.keys(data).length === 1) next();
   else {
-    const error = new Error(
-      `The reservation_time must be in correct format: HH:MM:SS`
-    );
-    error.status = 400;
-    throw error;
+    let regEx = /^(?:2[0-3]|[01]?[0-9]):[0-5][0-9]:[0-5][0-9]$/;
+    let regEx2 = /^(?:2[0-3]|[01]?[0-9]):[0-5][0-9]$/;
+
+    let stored = req.body.data.reservation_time.match(regEx) != null;
+    let stored2 = req.body.data.reservation_time.match(regEx2) != null;
+
+    if (stored || stored2) next();
+    else {
+      const error = new Error(
+        `The reservation_time must be in correct format: HH:MM:SS`
+      );
+      error.status = 400;
+      throw error;
+    }
   }
 }
 
@@ -237,7 +267,7 @@ async function list(req, res) {
 
 module.exports = {
   create: [
-    hasRequiredProperties,
+    hasRequiredFormProperties,
     peoplePropertyIsNumber,
     reservationDateIsCorrect,
     reservationDateIsTuesday,
@@ -250,6 +280,10 @@ module.exports = {
   read: [asyncErrorBoundary(reservationExists), asyncErrorBoundary(read)],
   update: [
     asyncErrorBoundary(reservationExists),
+    checkRequiredProperties,
+    reservationDateIsCorrect, //
+    reservationTimeIsCorrectFormat, //
+    peoplePropertyIsNumber, //
     reservationStatusIsValid,
     reservationStatusIsNotFinished,
     asyncErrorBoundary(update),
