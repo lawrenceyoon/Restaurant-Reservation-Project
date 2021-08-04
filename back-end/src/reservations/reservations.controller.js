@@ -251,7 +251,6 @@ async function read(_, res) {
 }
 
 async function update(req, res) {
-  // NEED TO DO VALIDATIONS: BUT CATCH IS: THE REQ.BODY FOR PUT REQUEST CAN BE STATUS OR THE RESERVATION INFORMATION EX) first_name, last_name, etc.
   const { reservation_id } = res.locals.reservation;
   const data = await service.update(reservation_id, req.body.data);
 
@@ -281,9 +280,9 @@ module.exports = {
   update: [
     asyncErrorBoundary(reservationExists),
     checkRequiredProperties,
-    reservationDateIsCorrect, //
-    reservationTimeIsCorrectFormat, //
-    peoplePropertyIsNumber, //
+    reservationDateIsCorrect,
+    reservationTimeIsCorrectFormat,
+    peoplePropertyIsNumber,
     reservationStatusIsValid,
     reservationStatusIsNotFinished,
     asyncErrorBoundary(update),

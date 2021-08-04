@@ -3,6 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 // local files
+import './Table.css';
 
 const Table = ({ table }) => {
   /* ----- useHistory ----- */
@@ -36,28 +37,36 @@ const Table = ({ table }) => {
 
   /* ----- render content ----- */
   return (
-    <div className="table">
-      <h3>Table Name: {table.table_name}</h3>
-      <p>Table ID: {table.table_id}</p>
-      <p>Capacity: {table.capacity}</p>
-      {!table.reservation_id ? (
-        <div className="free">
-          <p data-table-id-status={`${table.table_id}`}>FREE</p>
+    <div className="Table">
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title table-name">{table.table_name}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">
+            Capacity: {table.capacity}
+          </h6>
+          {!table.reservation_id ? (
+            <p className="card-text" data-table-id-status={`${table.table_id}`}>
+              Status: <span className="free">FREE</span>
+            </p>
+          ) : (
+            <div>
+              <p className="card-text" data-table-id-status={table.table_id}>
+                Status: <span className="occupied">OCCUPIED</span>
+              </p>
+              <button
+                className="card-link btn"
+                data-table-id-finish={table.table_id}
+                type="button"
+                onClick={() =>
+                  handleFinishButton(table.table_id, table.reservation_id)
+                }
+              >
+                Finish
+              </button>
+            </div>
+          )}
         </div>
-      ) : (
-        <div className="occupied">
-          <p data-table-id-status={table.table_id}>OCCUPIED</p>
-          <button
-            data-table-id-finish={table.table_id}
-            type="button"
-            onClick={() =>
-              handleFinishButton(table.table_id, table.reservation_id)
-            }
-          >
-            Finish
-          </button>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

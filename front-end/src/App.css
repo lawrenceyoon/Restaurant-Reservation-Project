@@ -1,0 +1,13 @@
+:root {
+  /* font family */
+  --cursive: 'MonteCarlo', cursive;
+
+  /* colors */
+  --red: #dc143c;
+  --white: #fff;
+  --gray: #808080;
+  --h3-paddingTB: 20px 0;
+  --sky-blue: #0fc0fc;
+  --darker-sky-blue: #45b1e8;
+  --green: #50c878;
+}

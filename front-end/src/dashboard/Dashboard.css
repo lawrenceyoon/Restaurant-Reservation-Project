@@ -1,5 +1,54 @@
+@import '../App.css';
+
+.Dashboard {
+  text-align: center;
+  background: url('../imgs/bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.Dashboard h1 {
+  font-family: var(--cursive);
+  letter-spacing: 4px;
+  font-size: 6rem;
+}
+
+.Dashboard .green-leaf {
+  width: 500px;
+  height: 354px;
+  opacity: 0.7;
+  margin: 0 auto;
+}
+
+.Dashboard img {
+  width: 100%;
+}
+
+.Dashboard .AllReservations {
+  position: relative;
+}
+
+.Dashboard .AllReservations h3 {
+  position: absolute;
+  top: 125px;
+  right: 550px;
+}
+
+.Dashboard .AllTables {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.Dashboard .AllTables h3 {
+  position: absolute;
+  top: 125px;
+  right: 600px;
+}
+
 .Dashboard .btn {
-  background-color: #45b1e8;
+  background-color: var(--darker-sky-blue);
   border: 0;
   color: #fff;
 }
@@ -9,5 +58,14 @@
 }
 
 .Dashboard .today {
-  background-color: #0fc0fc;
+  background-color: var(--sky-blue);
+}
+
+.Dashboard .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Dashboard h3 {
+  padding: var(--h3-paddingTB);
 }

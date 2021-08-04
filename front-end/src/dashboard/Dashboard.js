@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 // local files
 import './Dashboard.css';
+import greenleaf from '../imgs/greenleaf.png';
 import Reservation from '../reservations/Reservation';
 import Table from '../tables/Table';
 import { listReservations } from '../utils/api';
 import ErrorAlert from '../layout/ErrorAlert';
 import { today, next, previous } from '../utils/date-time';
 import useQuery from '../utils/useQuery';
-
 /**
  * Defines the dashboard page.
  * @param date
@@ -98,13 +98,17 @@ function Dashboard() {
     <main className="Dashboard">
       <h1>Dashboard</h1>
 
+      <h2>{reservation_date}</h2>
+
       <section className="AllReservations">
-        <div className="d-md-flex mb-3">
-          <h2>Reservations for {reservation_date}</h2>
+        <div className="green-leaf">
+          <img src={greenleaf} alt="green leaf" />
         </div>
+        <h3>Reservations</h3>
+
         <ErrorAlert error={reservationsError} />
         {/* {JSON.stringify(reservations)} */}
-        {reservationsData}
+        <div className="container">{reservationsData}</div>
         <button
           type="button"
           className="btn previous"
@@ -121,10 +125,12 @@ function Dashboard() {
       </section>
 
       <section className="AllTables">
-        <div className="d-md-flex mb-3">
-          <h2>Tables for {reservation_date}</h2>
+        <div className="green-leaf">
+          <img src={greenleaf} alt="green leaf" />
         </div>
-        {tablesData}
+        <h3>Tables</h3>
+
+        <div className="container">{tablesData}</div>
       </section>
     </main>
   );

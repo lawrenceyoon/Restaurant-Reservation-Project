@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 // local files
+import './Reservation.css';
 
 const Reservation = ({ reservation }) => {
   /* ----- useHistory ----- */
@@ -34,33 +35,53 @@ const Reservation = ({ reservation }) => {
 
   /* ----- render content ----- */
   return (
-    <div className="reservation">
-      <h3>
-        {reservation.first_name} {reservation.last_name} ID #:{' '}
-        {reservation.reservation_id}
-      </h3>
-      <p>Phone Number: {reservation.mobile_number}</p>
-      <p>Reservation Time: {reservation.reservation_time}</p>
-      <p>Number of people: {reservation.people}</p>
-      <p data-reservation-id-status={reservation.reservation_id}>
-        Status: {reservation.status}
-      </p>
-      {reservation.status === 'booked' ? (
-        <Link to={`/reservations/${reservation.reservation_id}/seat`}>
-          <button type="button">Seat</button>
-        </Link>
-      ) : null}
-      <br />
-      <Link to={`/reservations/${reservation.reservation_id}/edit`}>
-        <button type="button">Edit</button>
-      </Link>
-      <button
-        data-reservation-id-cancel={reservation.reservation_id}
-        type="button"
-        onClick={() => handleCancelButton(reservation.reservation_id)}
-      >
-        Cancel
-      </button>
+    <div className="Reservation">
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title reservation-name">
+            {reservation.first_name} {reservation.last_name}
+          </h5>
+          <p
+            className="card-text"
+            data-reservation-id-status={reservation.reservation_id}
+          >
+            <strong>Status:</strong> {reservation.status}
+          </p>
+          <p className="card-text">
+            <strong>Phone Number:</strong> {reservation.mobile_number}
+          </p>
+          <p className="card-text">
+            <strong>Reservation Time:</strong> {reservation.reservation_time}
+          </p>
+          <p className="card-text">
+            <strong>People:</strong> {reservation.people}
+          </p>
+          {reservation.status === 'booked' ? (
+            <p className="card-text">
+              <Link to={`/reservations/${reservation.reservation_id}/seat`}>
+                <button className="btn btn-seat" type="button">
+                  Seat
+                </button>
+              </Link>
+            </p>
+          ) : null}
+          <p className="card-text">
+            <Link to={`/reservations/${reservation.reservation_id}/edit`}>
+              <button className="btn btn-edit" type="button">
+                Edit
+              </button>
+            </Link>
+            <button
+              data-reservation-id-cancel={reservation.reservation_id}
+              className="btn btn-cancel"
+              type="button"
+              onClick={() => handleCancelButton(reservation.reservation_id)}
+            >
+              Cancel
+            </button>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
