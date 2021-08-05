@@ -3,11 +3,23 @@
   --cursive: 'MonteCarlo', cursive;
 
   /* colors */
-  --red: #dc143c;
+  --light-gray: #686868;
+  --dark-gray: #484848;
+  --light-brown: #f0ead6;
+  --deer-brown: #ba8759;
+  --rosybrown: #bc8f8f;
+  --red: #cc0000;
+  --darker-red: #a31f34;
   --white: #fff;
   --gray: #808080;
   --h3-paddingTB: 20px 0;
   --sky-blue: #0fc0fc;
-  --darker-sky-blue: #45b1e8;
+  --cool-blue: #45b1e8;
+  --darker-blue: rgb(0, 123, 255);
+  --darkest-blue: ##0056b3;
   --green: #50c878;
+  --dark-bg: #393a44;
+  --pink: #fc6c85;
+  --lemon-lime: #e3ff00;
+  --orange: #ffbf00;
 }

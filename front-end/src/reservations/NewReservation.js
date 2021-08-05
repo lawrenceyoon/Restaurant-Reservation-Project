@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 // local files
+import './NewReservation.css';
 import { today } from '../utils/date-time';
 import ErrorAlert from '../layout/ErrorAlert';
 import formatReservationTime from '../utils/format-reservation-time';

@@ -1,56 +1,107 @@
 @import '../App.css';
 
 .Reservation {
-  display: flex;
-  width: 50%;
-  align-items: stretch;
+  width: 100%;
 }
 
 .Reservation .card {
-  background-color: #f0ead6;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  background-color: var(--light-brown);
 }
 
 .Reservation .reservation-name {
   font-family: var(--cursive);
-  font-size: 3rem;
-}
-
-.Reservation .btn-seat {
-  color: var(--darker-sky-blue);
-  border: 1px solid var(--darker-sky-blue);
-  background-color: var(--white);
-}
-
-.Reservation .btn-seat:hover {
-  color: var(--white);
-  border: 1px solid var(--darker-sky-blue);
-  background-color: var(--darker-sky-blue);
+  font-size: 2em;
 }
 
 .Reservation .btn-edit {
-  color: var(--green);
-  border: 1px solid var(--green);
-  background-color: var(--white);
-}
-
-.Reservation .btn-edit:hover {
-  color: var(--white);
-  border: 1px solid var(--green);
-  background-color: var(--green);
+  margin-right: 10px;
 }
 
 .Reservation .btn-cancel {
   color: var(--red);
   border: 1px solid var(--red);
   background-color: var(--white);
+  margin-left: 10px;
 }
 
 .Reservation .btn-cancel:hover {
   color: var(--white);
   border: 1px solid var(--red);
   background-color: var(--red);
+}
+
+.Reservation .btn-seat,
+.Reservation .btn-edit {
+  color: var(--rosybrown);
+  border: 1px solid var(--rosybrown);
+  background-color: var(--white);
+}
+
+.Reservation .btn-seat:hover,
+.Reservation .btn-edit:hover {
+  color: var(--white);
+  border: 1px solid var(--rosybrown);
+  background-color: var(--rosybrown);
+}
+
+/* media queries >= 768px */
+@media (min-width: 768px) {
+  .Reservation .reservation-name {
+    font-size: 3em;
+    padding-bottom: 15px;
+  }
+
+  .Reservation .reservation-status,
+  .Reservation .reservation-mobile-number,
+  .Reservation .reservation-time,
+  .Reservation .reservation-people {
+    font-size: 1.3em;
+  }
+}
+
+/* media queries >= 992px */
+@media (min-width: 992px) {
+  .Reservation {
+    width: 50%;
+  }
+
+  .Reservation .card {
+    background-color: transparent;
+    border: 0;
+  }
+
+  .Reservation .btn {
+    color: var(--white);
+    border: 1px solid var(--deer-brown);
+    background-color: var(--deer-brown);
+  }
+
+  .Reservation .btn:hover {
+    color: var(--deer-brown);
+    border: 1px solid var(--deer-brown);
+    background-color: var(--white);
+  }
+
+  .Reservation .btn-cancel {
+    color: var(--white);
+    border: 1px solid var(--red);
+    background-color: var(--red);
+  }
+
+  .Reservation .btn-cancel:hover {
+    color: var(--red);
+    border: 1px solid var(--red);
+    background-color: var(--white);
+  }
+
+  .Reservation .reservation-name {
+    font-size: 4em;
+  }
+
+  .Reservation .reservation-status,
+  .Reservation .reservation-mobile-number,
+  .Reservation .reservation-time,
+  .Reservation .reservation-people {
+    font-size: 1.6em;
+  }
 }

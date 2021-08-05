@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 // local files
+import './Search.css';
 import Reservation from '../reservations/Reservation';
 
 const Search = () => {
@@ -46,8 +47,10 @@ const Search = () => {
             onChange={handleChange}
             required
           />
+          <button className="btn" type="submit">
+            Find
+          </button>
         </div>
-        <button type="submit">Find</button>
 
         <section className="AllReservations">
           {!reservations.length ? (

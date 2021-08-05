@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 // local files
 import './Dashboard.css';
 import greenleaf from '../imgs/greenleaf.png';
+import Footer from '../layout/Footer';
 import Reservation from '../reservations/Reservation';
 import Table from '../tables/Table';
 import { listReservations } from '../utils/api';
@@ -96,32 +97,35 @@ function Dashboard() {
   /* ----- render content ----- */
   return (
     <main className="Dashboard">
+      <ErrorAlert error={reservationsError} />
+      {/* {JSON.stringify(reservations)} */}
       <h1>Dashboard</h1>
-
       <h2>{reservation_date}</h2>
-
       <section className="AllReservations">
         <div className="green-leaf">
           <img src={greenleaf} alt="green leaf" />
         </div>
         <h3>Reservations</h3>
-
-        <ErrorAlert error={reservationsError} />
-        {/* {JSON.stringify(reservations)} */}
-        <div className="container">{reservationsData}</div>
-        <button
-          type="button"
-          className="btn previous"
-          onClick={handlePreviousButton}
-        >
-          Previous
-        </button>
-        <button type="button" className="btn next" onClick={handleNextButton}>
-          Next
-        </button>
-        <button type="button" className="btn today" onClick={handleTodayButton}>
-          Today
-        </button>
+        <div className="buttons">
+          <button
+            type="button"
+            className="btn previous"
+            onClick={handlePreviousButton}
+          >
+            Previous
+          </button>
+          <button type="button" className="btn next" onClick={handleNextButton}>
+            Next
+          </button>
+          <button
+            type="button"
+            className="btn today"
+            onClick={handleTodayButton}
+          >
+            Today
+          </button>
+        </div>
+        <div className="reservations-data">{reservationsData}</div>
       </section>
 
       <section className="AllTables">
@@ -130,8 +134,10 @@ function Dashboard() {
         </div>
         <h3>Tables</h3>
 
-        <div className="container">{tablesData}</div>
+        <div className="tables-data">{tablesData}</div>
       </section>
+
+      <Footer />
     </main>
   );
 }

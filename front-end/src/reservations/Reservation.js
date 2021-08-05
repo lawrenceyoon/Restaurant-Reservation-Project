@@ -42,18 +42,18 @@ const Reservation = ({ reservation }) => {
             {reservation.first_name} {reservation.last_name}
           </h5>
           <p
-            className="card-text"
+            className="card-text reservation-id reservation-status"
             data-reservation-id-status={reservation.reservation_id}
           >
             <strong>Status:</strong> {reservation.status}
           </p>
-          <p className="card-text">
+          <p className="card-text reservation-mobile-number">
             <strong>Phone Number:</strong> {reservation.mobile_number}
           </p>
-          <p className="card-text">
+          <p className="card-text reservation-time">
             <strong>Reservation Time:</strong> {reservation.reservation_time}
           </p>
-          <p className="card-text">
+          <p className="card-text reservation-people">
             <strong>People:</strong> {reservation.people}
           </p>
           {reservation.status === 'booked' ? (

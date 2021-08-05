@@ -1,0 +1,59 @@
+@import '../App.css';
+
+.Search {
+  text-align: center;
+}
+
+.Search .form-group {
+  border: 1px solid red;
+  margin: 0;
+  padding-top: 100px;
+}
+
+.Search label {
+  font-size: 3em;
+  font-family: var(--cursive);
+}
+
+.Search input {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.Search .btn {
+  margin: 20px 0;
+  color: var(--rosybrown);
+  border: 1px solid var(--rosybrown);
+  background-color: var(--white);
+}
+
+.Search .btn:hover {
+  color: var(--white);
+  border: 1px solid var(--rosybrown);
+  background-color: var(--rosybrown);
+}
+
+.Search .AllReservations div {
+  border: 1px solid red;
+  min-height: 600px;
+}
+
+.Search .form-group::after {
+  content: '';
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+/* media queries >= 992px */
+@media (min-width: 992px) {
+  .Search .AllReservations {
+    border: 1px solid blue;
+    min-height: 1500px;
+  }
+}
