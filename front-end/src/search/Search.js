@@ -4,6 +4,7 @@ import axios from 'axios';
 // local files
 import './Search.css';
 import Reservation from '../reservations/Reservation';
+import Footer from '../layout/Footer';
 
 const Search = () => {
   /* ----- state ----- */
@@ -47,7 +48,7 @@ const Search = () => {
             onChange={handleChange}
             required
           />
-          <button className="btn" type="submit">
+          <button className="btn find-btn" type="submit">
             Find
           </button>
         </div>
@@ -60,6 +61,8 @@ const Search = () => {
           )}
         </section>
       </form>
+
+      <Footer />
     </section>
   );
 };

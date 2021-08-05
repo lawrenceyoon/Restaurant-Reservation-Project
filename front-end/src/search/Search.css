@@ -5,7 +5,6 @@
 }
 
 .Search .form-group {
-  border: 1px solid red;
   margin: 0;
   padding-top: 100px;
 }
@@ -20,21 +19,20 @@
   margin: 0 auto;
 }
 
-.Search .btn {
+.Search .find-btn {
   margin: 20px 0;
   color: var(--rosybrown);
   border: 1px solid var(--rosybrown);
   background-color: var(--white);
 }
 
-.Search .btn:hover {
+.Search .find-btn:hover {
   color: var(--white);
   border: 1px solid var(--rosybrown);
   background-color: var(--rosybrown);
 }
 
-.Search .AllReservations div {
-  border: 1px solid red;
+.Search .AllReservations {
   min-height: 600px;
 }
 
@@ -52,8 +50,39 @@
 
 /* media queries >= 992px */
 @media (min-width: 992px) {
+  .Search label {
+    font-size: 4em;
+  }
+
+  .Search .find-btn {
+    color: var(--white);
+    border: 1px solid var(--deer-brown);
+    background-color: var(--deer-brown);
+  }
+
+  .Search .find-btn:hover {
+    color: var(--deer-brown);
+    border: 1px solid var(--deer-brown);
+    background-color: var(--white);
+  }
+
   .Search .AllReservations {
-    border: 1px solid blue;
-    min-height: 1500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+
+  .Search .AllReservations::after {
+    content: '';
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }
