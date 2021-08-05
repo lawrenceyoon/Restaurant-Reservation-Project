@@ -3,27 +3,6 @@
 .Menu {
   width: 100%;
   margin: 0 auto;
-  position: fixed;
-  z-index: 1;
-}
-
-.transparent {
-  background-color: transparent;
-}
-
-.dark-bg {
-  background-color: var(--dark-bg);
-}
-
-.Menu .plus-sign,
-.Menu .minus-sign {
-  padding: 5px 0 10px 5px;
-  cursor: pointer;
-}
-
-.Menu .plus-sign:hover,
-.Menu .minus-sign:hover {
-  color: var(--pink);
 }
 
 .Menu ul {
@@ -64,21 +43,9 @@
 @media (min-width: 992px) {
   .Menu {
     max-width: 1100px;
-    left: 0;
-    right: 0;
-    margin-right: auto;
-    margin-left: auto;
   }
 
-  .Menu .periodic-tables {
-    font-size: 30px;
-  }
-
-  .Menu .plus-sign,
-  .Menu .minus-sign {
-    padding: 10px 0 0 10px;
-  }
-
+  .Menu .periodic-tables,
   .Menu .oi,
   .Menu p {
     font-size: 25px;
