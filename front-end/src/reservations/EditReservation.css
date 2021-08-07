@@ -1,0 +1,25 @@
+@import '../App.css';
+
+.EditReservation {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding-top: 100px;
+}
+
+.EditReservation h2 {
+  font-family: var(--cursive);
+  font-size: 3em;
+  padding-bottom: 30px;
+}
+
+.EditReservation .card {
+  background-color: var(--light-brown);
+}
+
+.EditReservation .reservation-name {
+  font-family: var(--cursive);
+  font-size: 2em;
+}
+
+/* */

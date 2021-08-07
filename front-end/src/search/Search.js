@@ -37,7 +37,7 @@ const Search = () => {
     <section className="Search">
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
-          <label htmlFor="mobile_number">Mobile Number:</label>
+          <label htmlFor="mobile_number">Phone Number:</label>
           <input
             id="mobile_number"
             className="form-control"
@@ -48,14 +48,16 @@ const Search = () => {
             onChange={handleChange}
             required
           />
-          <button className="btn find-btn" type="submit">
-            Find
-          </button>
+          <div className="buttons">
+            <button className="btn find-btn" type="submit">
+              Find
+            </button>
+          </div>
         </div>
 
         <section className="AllReservations">
           {!reservations.length ? (
-            <div>No reservations found</div>
+            <div className="no-reservations">No reservations found</div>
           ) : (
             reservationsData
           )}

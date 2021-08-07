@@ -49,6 +49,10 @@
   padding: 20px 15px;
 }
 
+.Dashboard .btn {
+  box-shadow: var(--button-shadow);
+}
+
 .Dashboard .previous {
   color: var(--pink);
   border: 1px solid var(--pink);
@@ -62,10 +66,10 @@
 }
 
 .Dashboard .next {
-  margin: 0 20px;
   color: var(--orange);
   border: 1px solid var(--orange);
   background-color: var(--white);
+  margin: 0 20px;
 }
 
 .Dashboard .next:hover {
@@ -89,6 +93,8 @@
 .Dashboard .AllReservations,
 .Dashboard .AllTables {
   position: relative;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .Dashboard .AllTables .green-leaf {
@@ -130,6 +136,11 @@
   .Dashboard .AllTables .green-leaf {
     margin: 50px auto;
   }
+
+  .Dashboard .AllReservations,
+  .Dashboard .AllTables {
+    width: 80%;
+  }
 }
 
 /* media queries >= 992px */
@@ -166,7 +177,6 @@
   }
 
   .Dashboard .next {
-    margin: 0 20px;
     color: var(--white);
     border: 1px solid var(--orange);
     background-color: var(--orange);
@@ -188,6 +198,11 @@
     color: #000;
     border: 1px solid var(--lemon-lime);
     background-color: var(--white);
+  }
+
+  .Dashboard .AllReservations,
+  .Dashboard .AllTables {
+    width: 100%;
   }
 
   .Dashboard .reservations-data,

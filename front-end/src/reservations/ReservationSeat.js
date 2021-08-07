@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import ErrorAlert from '../layout/ErrorAlert';
 // local files
 import './ReservationSeat.css';
+import Footer from '../layout/Footer';
 
 const ReservationSeat = () => {
   /* ----- useHistory, useParams ----- */
@@ -174,21 +175,34 @@ const ReservationSeat = () => {
       })}
       {/* */}
       <form onSubmit={handleFormSubmit}>
-        <label htmlFor="table_id">Select Table:</label>
-        <select
-          id="table_id"
-          name="table_id"
-          onChange={handleChange}
-          value={FormData.table_id}
-        >
-          <option value="">-- Select an Option --</option>
-          {tableData}
-        </select>
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleCancelButton}>
-          Cancel
-        </button>
+        <div className="form-group">
+          <label htmlFor="table_id">Select Table:</label>
+          <select
+            id="table_id"
+            className="form-control"
+            name="table_id"
+            onChange={handleChange}
+            value={FormData.table_id}
+          >
+            <option value="">-- Select an Option --</option>
+            {tableData}
+          </select>
+          <div className="buttons">
+            <button className="btn submit-btn" type="submit">
+              Submit
+            </button>
+            <button
+              className="btn cancel-btn"
+              type="button"
+              onClick={handleCancelButton}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       </form>
+
+      <Footer />
     </div>
   );
 };

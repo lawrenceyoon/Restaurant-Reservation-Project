@@ -22,4 +22,9 @@
   --pink: #fc6c85;
   --lemon-lime: #e3ff00;
   --orange: #ffbf00;
+  --banana-yellow: #ffe135;
+
+  /* box shadow */
+  --form-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --button-shadow: rgba(44, 50, 50, 0.71) 3px 2px 5px 0px;
 }

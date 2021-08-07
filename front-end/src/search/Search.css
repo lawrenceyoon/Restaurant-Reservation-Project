@@ -16,13 +16,25 @@
   font-family: var(--cursive);
 }
 
-.Search input {
+.Search .form-control {
+  border-radius: 4px;
+  border: 0;
+  font-size: 1.5em;
   width: 75%;
   margin: 0 auto;
+  text-align: center;
+  box-shadow: var(--form-shadow);
+}
+
+.Search .buttons {
+  margin: 40px 0;
+}
+
+.Search .btn {
+  box-shadow: var(--button-shadow);
 }
 
 .Search .find-btn {
-  margin: 20px 0;
   color: var(--rosybrown);
   border: 1px solid var(--rosybrown);
   background-color: var(--white);
@@ -38,22 +50,32 @@
   min-height: 600px;
 }
 
-.Search .form-group::after {
-  content: '';
-  background-color: transparent;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.1);
-  pointer-events: none;
+.Search .no-reservations {
+  color: var(--red);
+  font-family: var(--cursive);
+  font-size: 3em;
+}
+
+/* media queries >= 768px */
+@media (min-width: 768px) {
+  .Search .form-control {
+    width: 500px;
+    margin: 20px auto 0 auto;
+  }
+
+  .Search .btn {
+    font-size: 20px;
+  }
 }
 
 /* media queries >= 992px */
 @media (min-width: 992px) {
   .Search label {
     font-size: 4em;
+  }
+
+  .Search .form-control {
+    width: 80%;
   }
 
   .Search .find-btn {
@@ -86,5 +108,11 @@
     position: absolute;
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .Search .no-reservations {
+    color: var(--red);
+    font-family: var(--cursive);
+    font-size: 3.5em;
   }
 }

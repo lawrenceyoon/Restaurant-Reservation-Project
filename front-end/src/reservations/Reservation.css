@@ -13,35 +13,49 @@
   font-size: 2em;
 }
 
-.Reservation .btn-edit {
-  margin-right: 10px;
+.Reservation .buttons {
+  padding: 10px;
 }
 
-.Reservation .btn-cancel {
+.Reservation .seat-btn {
+  color: #000;
+  border: 1px solid var(--banana-yellow);
+  background-color: var(--white);
+  box-shadow: rgba(44, 50, 50, 0.71) 3px 2px 5px 0px;
+}
+
+.Reservation .seat-btn:hover {
+  color: #000;
+  border: 1px solid var(--banana-yellow);
+  background-color: var(--banana-yellow);
+}
+
+.Reservation .edit-btn {
+  color: var(--rosybrown);
+  border: 1px solid var(--rosybrown);
+  background-color: var(--white);
+  margin-right: 10px;
+  box-shadow: rgba(44, 50, 50, 0.71) 3px 2px 5px 0px;
+}
+
+.Reservation .edit-btn:hover {
+  color: var(--white);
+  border: 1px solid var(--rosybrown);
+  background-color: var(--rosybrown);
+}
+
+.Reservation .cancel-btn {
   color: var(--red);
   border: 1px solid var(--red);
   background-color: var(--white);
   margin-left: 10px;
+  box-shadow: rgba(44, 50, 50, 0.71) 3px 2px 5px 0px;
 }
 
-.Reservation .btn-cancel:hover {
+.Reservation .cancel-btn:hover {
   color: var(--white);
   border: 1px solid var(--red);
   background-color: var(--red);
-}
-
-.Reservation .btn-seat,
-.Reservation .btn-edit {
-  color: var(--rosybrown);
-  border: 1px solid var(--rosybrown);
-  background-color: var(--white);
-}
-
-.Reservation .btn-seat:hover,
-.Reservation .btn-edit:hover {
-  color: var(--white);
-  border: 1px solid var(--rosybrown);
-  background-color: var(--rosybrown);
 }
 
 /* media queries >= 768px */
@@ -70,25 +84,37 @@
     border: 0;
   }
 
-  .Reservation .btn {
+  .Reservation .seat-btn {
+    color: #000;
+    border: 1px solid var(--banana-yellow);
+    background-color: var(--banana-yellow);
+  }
+
+  .Reservation .seat-btn:hover {
+    color: #000;
+    border: 1px solid var(--banana-yellow);
+    background-color: var(--white);
+  }
+
+  .Reservation .edit-btn {
     color: var(--white);
     border: 1px solid var(--deer-brown);
     background-color: var(--deer-brown);
   }
 
-  .Reservation .btn:hover {
+  .Reservation .edit-btn:hover {
     color: var(--deer-brown);
     border: 1px solid var(--deer-brown);
     background-color: var(--white);
   }
 
-  .Reservation .btn-cancel {
+  .Reservation .cancel-btn {
     color: var(--white);
     border: 1px solid var(--red);
     background-color: var(--red);
   }
 
-  .Reservation .btn-cancel:hover {
+  .Reservation .cancel-btn:hover {
     color: var(--red);
     border: 1px solid var(--red);
     background-color: var(--white);

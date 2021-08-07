@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 // local files
+import './EditReservation.css';
 import ErrorAlert from '../layout/ErrorAlert';
 import Form from '../layout/Form';
 import { today } from '../utils/date-time';
@@ -157,20 +158,29 @@ const EditReservation = () => {
   /* ----- render content ----- */
   return (
     <section className="EditReservation">
-      <h2>Here's the current reservation information: </h2>
-      <div className="reservation">
-        <h3>
-          {reservation.first_name} {reservation.last_name} ID #:{' '}
-          {reservation.reservation_id}
-        </h3>
-        <p>Phone Number: {reservation.mobile_number}</p>
-        <p>Reservation Time: {reservation.reservation_time}</p>
-        <p>Number of people: {reservation.people}</p>
-        <p data-reservation-id-status={reservation.reservation_id}>
-          Status: {reservation.status}
-        </p>
+      <h2>Current Reservation Info: </h2>
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title reservation-name">
+            {reservation.first_name} {reservation.last_name}
+          </h5>
+          <p
+            className="card-text reservation-id reservation-status"
+            data-reservation-id-status={reservation.reservation_id}
+          >
+            <strong>Status:</strong> {reservation.status}
+          </p>
+          <p className="card-text reservation-mobile-number">
+            <strong>Phone Number:</strong> {reservation.mobile_number}
+          </p>
+          <p className="card-text reservation-time">
+            <strong>Reservation Time:</strong> {reservation.reservation_time}
+          </p>
+          <p className="card-text reservation-people">
+            <strong>People:</strong> {reservation.people}
+          </p>
+        </div>
       </div>
-
       {/* Error messages */}
       {formErrors.map((error) => {
         return <ErrorAlert key={error} error={error} />;

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 // local files
 import './NewTable.css';
+import Footer from '../layout/Footer';
 
 const NewTable = () => {
   /* ----- useHistory ----- */
@@ -57,36 +58,51 @@ const NewTable = () => {
   /* ----- render content ----- */
   return (
     <div className="NewTable">
+      <h2>New Table:</h2>
       <form onSubmit={handleFormSubmit}>
-        <label htmlFor="table_name">
-          <input
-            id="table_name"
-            type="text"
-            name="table_name"
-            value={formData.table_name}
-            onChange={handleChange}
-            placeholder="Table Name"
-            minLength="2"
-            required
-          />
-        </label>
-        <label htmlFor="capacity">
-          <input
-            id="capacity"
-            type="number"
-            name="capacity"
-            value={formData.capacity}
-            onChange={handleNumberChange}
-            placeholder="1"
-            min="1"
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleCancelButton}>
-          Cancel
-        </button>
+        <div className="form-group">
+          <label htmlFor="table_name">
+            <span>Table Name:</span>
+            <input
+              id="table_name"
+              type="text"
+              name="table_name"
+              value={formData.table_name}
+              onChange={handleChange}
+              placeholder="Table Name"
+              minLength="2"
+              required
+            />
+          </label>
+          <label htmlFor="capacity">
+            <span>Capacity:</span>
+            <input
+              id="capacity"
+              type="number"
+              name="capacity"
+              value={formData.capacity}
+              onChange={handleNumberChange}
+              placeholder="1"
+              min="1"
+              required
+            />
+          </label>
+          <div className="buttons">
+            <button className="btn submit-btn" type="submit">
+              Submit
+            </button>
+            <button
+              className="btn cancel-btn"
+              type="button"
+              onClick={handleCancelButton}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       </form>
+
+      <Footer />
     </div>
   );
 };

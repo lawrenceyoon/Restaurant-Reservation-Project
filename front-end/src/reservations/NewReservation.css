@@ -1,5 +1,172 @@
 @import '../App.css';
 
 .NewReservation {
-  padding-top: 40px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding-top: 100px;
+}
+
+.NewReservation h2 {
+  font-family: var(--cursive);
+  font-size: 3em;
+  padding-bottom: 30px;
+}
+
+.NewReservation .form-group {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.NewReservation label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.NewReservation span {
+  font-family: var(--cursive);
+  width: 100%;
+  font-size: 2.2em;
+}
+
+.NewReservation input {
+  border-radius: 4px;
+  border: 0;
+  font-size: 1.5em;
+  text-align: center;
+  width: 90%;
+  box-shadow: var(--form-shadow);
+}
+
+.NewReservation input[type='number'] {
+  width: 50%;
+}
+
+.NewReservation .buttons {
+  padding: 0;
+  margin: 20px 0;
+}
+
+.NewReservation .btn {
+  box-shadow: var(--button-shadow);
+}
+
+.NewReservation .submit-btn {
+  margin-right: 10px;
+  color: var(--rosybrown);
+  background-color: var(--white);
+  border: 1px solid var(--rosybrown);
+}
+
+.NewReservation .submit-btn:hover {
+  color: var(--white);
+  border: 1px solid var(--rosybrown);
+  background-color: var(--rosybrown);
+}
+
+.NewReservation .cancel-btn {
+  margin-left: 10px;
+  color: var(--red);
+  background-color: var(--white);
+  border: 1px solid var(--red);
+}
+
+.NewReservation .cancel-btn:hover {
+  color: var(--white);
+  border: 1px solid var(--red);
+  background-color: var(--red);
+}
+
+/* media queries >= 768px */
+@media (min-width: 768px) {
+  .NewReservation input {
+    width: 600px;
+  }
+
+  .NewReservation input[type='number'] {
+    width: 10%;
+  }
+
+  .NewReservation .btn {
+    font-size: 20px;
+  }
+}
+
+/* media queries >= 992px */
+@media (min-width: 992px) {
+  .NewReservation form {
+    position: relative;
+    padding: 50px 0;
+  }
+
+  .NewReservation form::after {
+    content: '';
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .NewReservation h2 {
+    font-size: 4em;
+  }
+
+  .NewReservation label {
+    flex-direction: row;
+    width: 80%;
+  }
+
+  .NewReservation span {
+    justify-content: flex-end;
+    display: flex;
+    width: 40%;
+  }
+
+  .NewReservation input {
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    margin-left: 30px;
+    padding-left: 15px;
+  }
+
+  .NewReservation input[type='number'] {
+    text-align: center;
+    padding: 0;
+  }
+
+  .NewReservation .submit-btn {
+    color: var(--white);
+    border: 1px solid var(--deer-brown);
+    background-color: var(--deer-brown);
+  }
+
+  .NewReservation .submit-btn:hover {
+    color: var(--deer-brown);
+    border: 1px solid var(--deer-brown);
+    background-color: var(--white);
+  }
+
+  .NewReservation .cancel-btn {
+    margin-left: 10px;
+    color: var(--white);
+    border: 1px solid var(--red);
+    background-color: var(--red);
+  }
+
+  .NewReservation .cancel-btn:hover {
+    color: var(--red);
+    border: 1px solid var(--red);
+    background-color: var(--white);
+  }
 }
