@@ -57,16 +57,18 @@ const Table = ({ table }) => {
               >
                 Status: <span className="occupied">OCCUPIED</span>
               </p>
-              <button
-                className="card-link btn"
-                data-table-id-finish={table.table_id}
-                type="button"
-                onClick={() =>
-                  handleFinishButton(table.table_id, table.reservation_id)
-                }
-              >
-                Finish
-              </button>
+              <div className="buttons">
+                <button
+                  className="btn brown-btn buttons"
+                  data-table-id-finish={table.table_id}
+                  type="button"
+                  onClick={() =>
+                    handleFinishButton(table.table_id, table.reservation_id)
+                  }
+                >
+                  Finish
+                </button>
+              </div>
             </div>
           )}
         </div>

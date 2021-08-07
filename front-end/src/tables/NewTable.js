@@ -57,14 +57,15 @@ const NewTable = () => {
 
   /* ----- render content ----- */
   return (
-    <div className="NewTable">
-      <h2>New Table:</h2>
+    <section className="NewTable">
+      <h1>New Table:</h1>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="table_name">
             <span>Table Name:</span>
             <input
               id="table_name"
+              className="form-control"
               type="text"
               name="table_name"
               value={formData.table_name}
@@ -78,6 +79,7 @@ const NewTable = () => {
             <span>Capacity:</span>
             <input
               id="capacity"
+              className="form-control"
               type="number"
               name="capacity"
               value={formData.capacity}
@@ -88,11 +90,11 @@ const NewTable = () => {
             />
           </label>
           <div className="buttons">
-            <button className="btn submit-btn" type="submit">
+            <button className="btn brown-btn" type="submit">
               Submit
             </button>
             <button
-              className="btn cancel-btn"
+              className="btn red-btn"
               type="button"
               onClick={handleCancelButton}
             >
@@ -103,7 +105,7 @@ const NewTable = () => {
       </form>
 
       <Footer />
-    </div>
+    </section>
   );
 };
 

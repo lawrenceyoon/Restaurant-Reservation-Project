@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 const Menu = () => {
   /* ----- render content ----- */
   return (
-    <div className="Menu">
+    <section className="Menu">
       <nav>
         <ul>
           <li className="periodic-tables">
@@ -48,7 +48,7 @@ const Menu = () => {
           </li>
         </ul>
       </nav>
-    </div>
+    </section>
   );
 };
 

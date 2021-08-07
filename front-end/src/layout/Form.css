@@ -1,0 +1,41 @@
+@import '../App.css';
+
+.Form .buttons {
+  padding: 0;
+  margin: 20px 0;
+}
+
+.Form .submit-btn {
+  margin-right: 10px;
+  color: var(--rosybrown);
+  background-color: var(--white);
+  border: 1px solid var(--rosybrown);
+  box-shadow: rgba(44, 50, 50, 0.71) 3px 2px 5px 0px;
+}
+
+.Form .submit-btn:hover {
+  color: var(--white);
+  border: 1px solid var(--rosybrown);
+  background-color: var(--rosybrown);
+}
+
+.Form .cancel-btn {
+  margin-left: 10px;
+  color: var(--red);
+  background-color: var(--white);
+  border: 1px solid var(--red);
+  box-shadow: rgba(44, 50, 50, 0.71) 3px 2px 5px 0px;
+}
+
+.Form .cancel-btn:hover {
+  color: var(--white);
+  border: 1px solid var(--red);
+  background-color: var(--red);
+}
+
+/* media queries >= 768px */
+@media (min-width: 768px) {
+  .Form .btn {
+    font-size: 20px;
+  }
+}

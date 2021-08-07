@@ -57,9 +57,9 @@ const Reservation = ({ reservation }) => {
             <strong>People:</strong> {reservation.people}
           </p>
           {reservation.status === 'booked' ? (
-            <p className="card-text">
+            <p className="card-text buttons">
               <Link to={`/reservations/${reservation.reservation_id}/seat`}>
-                <button className="btn seat-btn" type="button">
+                <button className="btn yellow-btn" type="button">
                   Seat
                 </button>
               </Link>
@@ -67,13 +67,13 @@ const Reservation = ({ reservation }) => {
           ) : null}
           <p className="card-text buttons">
             <Link to={`/reservations/${reservation.reservation_id}/edit`}>
-              <button className="btn edit-btn" type="button">
+              <button className="btn brown-btn" type="button">
                 Edit
               </button>
             </Link>
             <button
               data-reservation-id-cancel={reservation.reservation_id}
-              className="btn cancel-btn"
+              className="btn red-btn"
               type="button"
               onClick={() => handleCancelButton(reservation.reservation_id)}
             >

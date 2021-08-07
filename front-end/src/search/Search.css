@@ -1,53 +1,20 @@
 @import '../App.css';
 
-.Search {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 1100px;
-  padding-top: 100px;
-}
-
-.Search .form-group {
-  margin: 0;
-}
-
-.Search label {
-  font-size: 3em;
-  font-family: var(--cursive);
-}
-
-.Search .form-control {
-  border-radius: 4px;
-  border: 0;
-  font-size: 1.5em;
-  width: 75%;
-  margin: 0 auto;
-  text-align: center;
-  box-shadow: var(--form-shadow);
-}
-
-.Search .buttons {
-  margin: 40px 0;
-}
-
-.Search .btn {
-  box-shadow: var(--button-shadow);
-}
-
-.Search .find-btn {
-  color: var(--rosybrown);
-  border: 1px solid var(--rosybrown);
-  background-color: var(--white);
-}
-
-.Search .find-btn:hover {
-  color: var(--white);
-  border: 1px solid var(--rosybrown);
-  background-color: var(--rosybrown);
-}
-
 .Search .AllReservations {
+  position: relative;
   min-height: 600px;
+}
+
+.Search .AllReservations::after {
+  content: '';
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .Search .no-reservations {
@@ -56,58 +23,14 @@
   font-size: 3em;
 }
 
-/* media queries >= 768px */
-@media (min-width: 768px) {
-  .Search .form-control {
-    width: 500px;
-    margin: 20px auto 0 auto;
-  }
-
-  .Search .btn {
-    font-size: 20px;
-  }
-}
-
 /* media queries >= 992px */
 @media (min-width: 992px) {
-  .Search label {
-    font-size: 4em;
-  }
-
-  .Search .form-control {
-    width: 80%;
-  }
-
-  .Search .find-btn {
-    color: var(--white);
-    border: 1px solid var(--deer-brown);
-    background-color: var(--deer-brown);
-  }
-
-  .Search .find-btn:hover {
-    color: var(--deer-brown);
-    border: 1px solid var(--deer-brown);
-    background-color: var(--white);
-  }
-
   .Search .AllReservations {
+    padding-top: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    position: relative;
-  }
-
-  .Search .AllReservations::after {
-    content: '';
-    background-color: transparent;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    pointer-events: none;
-    background-color: rgba(0, 0, 0, 0.1);
   }
 
   .Search .no-reservations {

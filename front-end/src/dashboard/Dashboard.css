@@ -1,36 +1,10 @@
 @import '../App.css';
 
-.Dashboard {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 1100px;
-  position: relative;
-}
-
-.Dashboard h1 {
-  font-family: var(--cursive);
-  font-size: 60px;
-  padding: 30px;
-  margin: 0;
-}
-
-.Dashboard h2 {
-  font-family: var(--cursive);
-  font-weight: bold;
-}
-
 .Dashboard h3 {
-  padding: var(--h3-paddingTB);
-  font-family: var(--cursive);
-  font-size: 2.3em;
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
   left: 0;
   right: 0;
   top: 50px;
-  text-align: center;
-  margin: 0;
 }
 
 .Dashboard .green-leaf {
@@ -39,94 +13,19 @@
   opacity: 0.7;
 }
 
-.Dashboard img {
-  width: 100%;
-}
-
 .Dashboard .buttons {
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px 15px;
-}
-
-.Dashboard .btn {
-  box-shadow: var(--button-shadow);
-}
-
-.Dashboard .previous {
-  color: var(--pink);
-  border: 1px solid var(--pink);
-  background-color: var(--white);
-}
-
-.Dashboard .previous:hover {
-  color: var(--white);
-  border: 1px solid var(--pink);
-  background-color: var(--pink);
-}
-
-.Dashboard .next {
-  color: var(--orange);
-  border: 1px solid var(--orange);
-  background-color: var(--white);
-  margin: 0 20px;
-}
-
-.Dashboard .next:hover {
-  color: var(--white);
-  border: 1px solid var(--orange);
-  background-color: var(--orange);
-}
-
-.Dashboard .today {
-  color: #000;
-  border: 1px solid var(--lemon-lime);
-  background-color: var(--white);
-}
-
-.Dashboard .today:hover {
-  color: #000;
-  border: 1px solid var(--lemon-lime);
-  background-color: var(--lemon-lime);
-}
-
-.Dashboard .AllReservations,
-.Dashboard .AllTables {
-  position: relative;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.Dashboard .AllTables .green-leaf {
-  margin: 50px auto;
+  margin: 0 0 20px 0;
 }
 
 /* media queries >= 768px */
 @media (min-width: 768px) {
-  .Dashboard h1 {
-    font-size: 100px;
-  }
-
-  .Dashboard h2 {
-    font-size: 40px;
-  }
-
   .Dashboard h3 {
     top: 80px;
-    font-size: 3em;
   }
 
   .Dashboard .green-leaf {
     width: 400px;
     margin: 0 auto;
-  }
-
-  .Dashboard .btn {
-    font-size: 20px;
-  }
-
-  .Dashboard .next {
-    margin: 0 30px;
   }
 
   .Dashboard .AllTables {
@@ -145,59 +44,16 @@
 
 /* media queries >= 992px */
 @media (min-width: 992px) {
-  .Dashboard h1 {
-    font-size: 8em;
-  }
-
-  .Dashboard h2 {
-    font-size: 4em;
-  }
-
   .Dashboard h3 {
     top: 110px;
-    letter-spacing: 2px;
-    font-size: 4.5em;
   }
 
   .Dashboard .green-leaf {
     width: 550px;
-    margin: 0 auto;
   }
 
-  .Dashboard .previous {
-    color: var(--white);
-    border: 1px solid var(--pink);
-    background-color: var(--pink);
-  }
-
-  .Dashboard .previous:hover {
-    color: var(--pink);
-    border: 1px solid var(--pink);
-    background-color: var(--white);
-  }
-
-  .Dashboard .next {
-    color: var(--white);
-    border: 1px solid var(--orange);
-    background-color: var(--orange);
-  }
-
-  .Dashboard .next:hover {
-    color: var(--orange);
-    border: 1px solid var(--orange);
-    background-color: var(--white);
-  }
-
-  .Dashboard .today {
-    color: #000;
-    border: 1px solid var(--lemon-lime);
-    background-color: var(--lemon-lime);
-  }
-
-  .Dashboard .today:hover {
-    color: #000;
-    border: 1px solid var(--lemon-lime);
-    background-color: var(--white);
+  .Dashboard .buttons {
+    margin-bottom: 40px;
   }
 
   .Dashboard .AllReservations,

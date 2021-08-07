@@ -4,13 +4,13 @@ import { useHistory } from 'react-router-dom';
 // local files
 import './Dashboard.css';
 import greenleaf from '../imgs/greenleaf.png';
-import Footer from '../layout/Footer';
+import useQuery from '../utils/useQuery';
+import ErrorAlert from '../layout/ErrorAlert';
+import { listReservations } from '../utils/api';
+import { today, next, previous } from '../utils/date-time';
 import Reservation from '../reservations/Reservation';
 import Table from '../tables/Table';
-import { listReservations } from '../utils/api';
-import ErrorAlert from '../layout/ErrorAlert';
-import { today, next, previous } from '../utils/date-time';
-import useQuery from '../utils/useQuery';
+import Footer from '../layout/Footer';
 /**
  * Defines the dashboard page.
  * @param date
@@ -96,7 +96,7 @@ function Dashboard() {
   };
   /* ----- render content ----- */
   return (
-    <main className="Dashboard">
+    <section className="Dashboard">
       <ErrorAlert error={reservationsError} />
       {/* {JSON.stringify(reservations)} */}
       <h1>Dashboard</h1>
@@ -108,18 +108,22 @@ function Dashboard() {
         <h3>Reservations</h3>
         <div className="buttons">
           <button
+            className="btn pink-btn"
             type="button"
-            className="btn previous"
             onClick={handlePreviousButton}
           >
             Previous
           </button>
-          <button type="button" className="btn next" onClick={handleNextButton}>
+          <button
+            className="btn orange-btn"
+            type="button"
+            onClick={handleNextButton}
+          >
             Next
           </button>
           <button
+            className="btn lemon-lime-btn"
             type="button"
-            className="btn today"
             onClick={handleTodayButton}
           >
             Today
@@ -138,7 +142,7 @@ function Dashboard() {
       </section>
 
       <Footer />
-    </main>
+    </section>
   );
 }
 

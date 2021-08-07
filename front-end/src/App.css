@@ -12,7 +12,6 @@
   --darker-red: #a31f34;
   --white: #fff;
   --gray: #808080;
-  --h3-paddingTB: 20px 0;
   --sky-blue: #0fc0fc;
   --cool-blue: #45b1e8;
   --darker-blue: rgb(0, 123, 255);
@@ -27,4 +26,290 @@
   /* box shadow */
   --form-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   --button-shadow: rgba(44, 50, 50, 0.71) 3px 2px 5px 0px;
+}
+
+/* general */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  font-family: var(--cursive);
+  font-size: 4em;
+  padding: 30px;
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--cursive);
+  font-weight: bold;
+  font-size: 2em;
+}
+
+h3 {
+  padding: 20px 0;
+  font-family: var(--cursive);
+  font-size: 2.5em;
+}
+
+img {
+  width: 100%;
+}
+
+/* cards */
+.card {
+  background-color: var(--light-brown);
+}
+
+.card-title {
+  font-family: var(--cursive);
+  font-size: 2em;
+}
+
+.card-text {
+  margin: 20px 0 0 0;
+}
+
+/* forms */
+.form-group {
+  margin: 0;
+}
+
+.form-control {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.3em;
+  box-shadow: var(--form-shadow);
+}
+
+/* buttons */
+.buttons {
+  margin: 40px 0;
+}
+
+.btn {
+  margin: 10px;
+  box-shadow: var(--button-shadow);
+}
+
+.pink-btn {
+  border: 1px solid var(--pink);
+  background-color: var(--white);
+  color: var(--pink);
+}
+
+.pink-btn:hover {
+  border: 1px solid var(--pink);
+  background-color: var(--pink);
+  color: var(--white);
+}
+
+.orange-btn {
+  border: 1px solid var(--orange);
+  background-color: var(--white);
+  color: var(--orange);
+}
+
+.orange-btn:hover {
+  border: 1px solid var(--orange);
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.lemon-lime-btn {
+  border: 1px solid var(--lemon-lime);
+  background-color: var(--white);
+  color: #000;
+}
+
+.lemon-lime-btn:hover {
+  border: 1px solid var(--lemon-lime);
+  background-color: var(--lemon-lime);
+  color: #000;
+}
+
+.yellow-btn {
+  border: 1px solid var(--banana-yellow);
+  background-color: var(--white);
+  color: #000;
+}
+
+.yellow-btn:hover {
+  border: 1px solid var(--banana-yellow);
+  background-color: var(--banana-yellow);
+  color: #000;
+}
+
+.brown-btn {
+  border: 1px solid var(--rosybrown);
+  background-color: var(--white);
+  color: var(--rosybrown);
+}
+
+.brown-btn:hover {
+  border: 1px solid var(--rosybrown);
+  background-color: var(--rosybrown);
+  color: var(--white);
+}
+
+.red-btn {
+  border: 1px solid var(--red);
+  background-color: var(--white);
+  color: var(--red);
+}
+
+.red-btn:hover {
+  border: 1px solid var(--red);
+  background-color: var(--red);
+  color: var(--white);
+}
+
+/* media queries >= 768px */
+@media (min-width: 768px) {
+  /* general */
+  h1 {
+    font-size: 6em;
+  }
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h3 {
+    font-size: 3em;
+  }
+
+  /* cards */
+  .card-title {
+    font-size: 3em;
+    padding-bottom: 15px;
+  }
+
+  .card-text {
+    font-size: 1.3em;
+  }
+
+  /* forms */
+  .form-control {
+    width: 75%;
+    font-size: 1.5em;
+  }
+
+  /* buttons */
+  .btn {
+    font-size: 20px;
+  }
+}
+
+/* media queries >= 992px */
+@media (min-width: 992px) {
+  /* general */
+  h1 {
+    padding: 50px;
+    font-size: 8em;
+  }
+
+  h2 {
+    font-size: 4em;
+  }
+
+  h3 {
+    font-size: 4.5em;
+  }
+
+  /* cards */
+  .card {
+    background-color: transparent;
+    border: 0;
+  }
+
+  .card-title {
+    font-size: 4em;
+  }
+
+  .card-text {
+    font-size: 1.6em;
+  }
+
+  /* forms */
+  .form-control {
+    width: 75%;
+  }
+
+  /* buttons */
+  .pink-btn {
+    border: 1px solid var(--pink);
+    background-color: var(--pink);
+    color: var(--white);
+  }
+
+  .pink-btn:hover {
+    border: 1px solid var(--pink);
+    background-color: var(--white);
+    color: var(--pink);
+  }
+
+  .orange-btn {
+    border: 1px solid var(--orange);
+    background-color: var(--orange);
+    color: var(--white);
+  }
+
+  .orange-btn:hover {
+    border: 1px solid var(--orange);
+    background-color: var(--white);
+    color: var(--orange);
+  }
+
+  .lemon-lime-btn {
+    border: 1px solid var(--lemon-lime);
+    background-color: var(--lemon-lime);
+    color: #000;
+  }
+
+  .lemon-lime-btn:hover {
+    border: 1px solid var(--lemon-lime);
+    background-color: var(--white);
+    color: #000;
+  }
+
+  .yellow-btn {
+    border: 1px solid var(--banana-yellow);
+    background-color: var(--banana-yellow);
+    color: #000;
+  }
+
+  .yellow-btn:hover {
+    border: 1px solid var(--banana-yellow);
+    background-color: var(--white);
+    color: #000;
+  }
+
+  .brown-btn {
+    border: 1px solid var(--deer-brown);
+    background-color: var(--deer-brown);
+    color: var(--white);
+  }
+
+  .brown-btn:hover {
+    border: 1px solid var(--deer-brown);
+    background-color: var(--white);
+    color: var(--deer-brown);
+  }
+
+  .red-btn {
+    border: 1px solid var(--red);
+    background-color: var(--red);
+    color: var(--white);
+  }
+
+  .red-btn:hover {
+    border: 1px solid var(--red);
+    background-color: var(--white);
+    color: var(--red);
+  }
 }

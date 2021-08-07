@@ -13,10 +13,10 @@ import './Layout.css';
  */
 const Layout = () => {
   return (
-    <div className="Layout">
+    <main className="Layout">
       <Menu />
       <Routes />
-    </div>
+    </main>
   );
 };
 

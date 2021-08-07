@@ -17,9 +17,7 @@
   background-color: var(--light-brown);
 }
 
-.EditReservation .reservation-name {
-  font-family: var(--cursive);
-  font-size: 2em;
+.EditReservation label {
 }
 
 /* */

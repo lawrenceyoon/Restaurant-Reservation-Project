@@ -37,7 +37,9 @@ const Search = () => {
     <section className="Search">
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
-          <label htmlFor="mobile_number">Phone Number:</label>
+          <h1>
+            <label htmlFor="mobile_number">Phone Number:</label>
+          </h1>
           <input
             id="mobile_number"
             className="form-control"
@@ -49,7 +51,7 @@ const Search = () => {
             required
           />
           <div className="buttons">
-            <button className="btn find-btn" type="submit">
+            <button className="btn brown-btn" type="submit">
               Find
             </button>
           </div>

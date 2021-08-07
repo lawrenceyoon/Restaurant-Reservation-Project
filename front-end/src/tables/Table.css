@@ -1,89 +1,22 @@
 @import '../App.css';
 
-.Table {
-  width: 100%;
-}
-
-.Table .card {
-  background-color: #f0ead6;
-}
-
-.Table .table-name {
-  font-family: var(--cursive);
-  font-size: 2em;
-}
-
-.Table .table-capacity {
-  color: var(--light-gray);
-}
-
-.Table .occupied {
-  color: var(--red);
-  font-weight: bold;
-}
-
+.Table .occupied,
 .Table .free {
   font-weight: bold;
 }
 
-.Table .btn {
-  color: var(--rosybrown);
-  background-color: var(--white);
-  border: 1px solid var(--rosybrown);
+.Table .occupied {
+  color: var(--red);
 }
 
-.Table .btn:hover {
-  color: var(--white);
-  border: 1px solid var(--rosybrown);
-  background-color: var(--rosybrown);
-}
-
-/* media queries >= 768px */
-@media (min-width: 768px) {
-  .Table .table-name {
-    font-size: 3em;
-    padding-bottom: 15px;
-  }
-
-  .Table .table-capacity,
-  .Table .table-status {
-    font-size: 1.3em;
-  }
+.Table .buttons {
+  margin: 20px 0 0 0;
 }
 
 /* media queries >= 992px */
 @media (min-width: 992px) {
   .Table {
     width: 50%;
-  }
-
-  .Table .card {
-    background-color: transparent;
-    border: 0;
-  }
-
-  .Table .table-name {
-    font-size: 4em;
-  }
-
-  .Table .table-capacity {
-    color: var(--dark-gray);
-  }
-
-  .Table .btn {
-    color: var(--white);
-    border: 1px solid var(--deer-brown);
-    background-color: var(--deer-brown);
-  }
-
-  .Table .btn:hover {
-    color: var(--deer-brown);
-    background-color: var(--white);
-    border: 1px solid var(--deer-brown);
-  }
-
-  .Table .table-capacity,
-  .Table .table-status {
-    font-size: 1.6em;
+    padding: 50px 0;
   }
 }

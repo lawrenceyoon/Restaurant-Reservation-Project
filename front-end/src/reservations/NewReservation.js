@@ -18,8 +18,8 @@ const NewReservation = () => {
     first_name: '',
     last_name: '',
     mobile_number: '',
-    reservation_date: today(),
-    reservation_time: '18:00:00',
+    reservation_date: '',
+    reservation_time: '',
     people: 1,
   };
 
@@ -166,13 +166,14 @@ const NewReservation = () => {
         return <ErrorAlert key={error} error={error} />;
       })}
       {/* */}
-      <h2>New Reservation:</h2>
+      <h1>New Reservation:</h1>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="first_name">
             <span>First name:</span>
             <input
               id="first_name"
+              className="form-control"
               type="text"
               name="first_name"
               value={formData.first_name}
@@ -185,6 +186,7 @@ const NewReservation = () => {
             <span>Last name:</span>
             <input
               id="last_name"
+              className="form-control"
               type="text"
               name="last_name"
               value={formData.last_name}
@@ -197,6 +199,7 @@ const NewReservation = () => {
             <span>Mobile Number:</span>
             <input
               id="mobile_number"
+              className="form-control"
               type="tel"
               name="mobile_number"
               value={formData.mobile_number}
@@ -208,6 +211,7 @@ const NewReservation = () => {
             <span>Reservation Date:</span>
             <input
               id="reservation_date"
+              className="form-control"
               type="date"
               name="reservation_date"
               pattern="\d{4}-\d{2}-\d{2}"
@@ -221,6 +225,7 @@ const NewReservation = () => {
             <span>Reservation Time:</span>
             <input
               id="reservation_time"
+              className="form-control"
               type="time"
               name="reservation_time"
               value={formData.reservation_time}
@@ -233,6 +238,7 @@ const NewReservation = () => {
             <span>People:</span>
             <input
               id="people"
+              className="form-control"
               type="number"
               name="people"
               value={formData.people}
@@ -241,11 +247,11 @@ const NewReservation = () => {
             />
           </label>
           <div className="buttons">
-            <button className="btn submit-btn" type="submit">
+            <button className="btn brown-btn" type="submit">
               Submit
             </button>
             <button
-              className="btn cancel-btn"
+              className="btn red-btn"
               type="button"
               onClick={handleCancelButton}
             >

@@ -168,7 +168,7 @@ const ReservationSeat = () => {
 
   /* ----- render content ----- */
   return (
-    <div className="ReservationSeat">
+    <section className="ReservationSeat">
       {/* Error messages */}
       {errors.map((error) => {
         return <ErrorAlert key={error} error={error} />;
@@ -176,7 +176,9 @@ const ReservationSeat = () => {
       {/* */}
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
-          <label htmlFor="table_id">Select Table:</label>
+          <h1>
+            <label htmlFor="table_id">Select Table:</label>
+          </h1>
           <select
             id="table_id"
             className="form-control"
@@ -188,11 +190,11 @@ const ReservationSeat = () => {
             {tableData}
           </select>
           <div className="buttons">
-            <button className="btn submit-btn" type="submit">
+            <button className="btn brown-btn" type="submit">
               Submit
             </button>
             <button
-              className="btn cancel-btn"
+              className="btn red-btn"
               type="button"
               onClick={handleCancelButton}
             >
@@ -203,7 +205,7 @@ const ReservationSeat = () => {
       </form>
 
       <Footer />
-    </div>
+    </section>
   );
 };
 
