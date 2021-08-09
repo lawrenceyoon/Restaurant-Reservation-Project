@@ -6,7 +6,8 @@ import axios from 'axios';
 import './Table.css';
 
 const Table = ({ table }) => {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
   /* ----- useHistory ----- */
   const history = useHistory();
