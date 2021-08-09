@@ -1,10 +1,10 @@
 // dependencies
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
 // local files
 import './EditReservation.css';
 import ErrorAlert from '../layout/ErrorAlert';
+import { readReservation, updateReservation } from '../utils/api';
 import { today } from '../utils/date-time';
 import formatReservationTime from '../utils/format-reservation-time';
 import Form from '../layout/Form';
@@ -21,28 +21,12 @@ const EditReservation = () => {
 
   /* ----- useEffect & loading API data ----- */
   useEffect(() => {
-    const abortController = new AbortController();
-
     async function loadReservation() {
-      try {
-        const response = await fetch(
-          `http://localhost:5000/reservations/${reservation_id}`,
-          {
-            signal: abortController.signal,
-          }
-        );
-        const reservationFromAPI = await response.json();
-        setReservation(reservationFromAPI.data);
-      } catch (error) {
-        if (error.name === 'AbortError') {
-          console.log('Aborted');
-        } else {
-          throw error;
-        }
-      }
+      const reservationData = await readReservation(reservation_id);
+
+      setReservation(reservationData);
     }
     loadReservation();
-    return () => abortController.abort();
   }, [reservation_id]);
 
   /* ----- helper functions ----- */
@@ -142,17 +126,13 @@ const EditReservation = () => {
 
     setFormErrors(runFormValidation);
     if (!runFormValidation.length) {
-      try {
-        const url = `http://localhost:5000/reservations/${reservation.reservation_id}`;
-        const data = {
-          data: reservation,
-        };
+      const data = {
+        data: reservation,
+      };
 
-        await axios.put(url, data);
-        history.push(`/dashboard/?date=${reservation.reservation_date}`);
-      } catch (error) {
-        console.log(error);
-      }
+      await updateReservation(reservation.reservation_id, data);
+      setReservation(reservation);
+      history.push(`/dashboard/?date=${reservation.reservation_date}`);
     }
   };
 

@@ -36,8 +36,6 @@ function Dashboard() {
   const [reservation_date, setReservation_date] = useState(date);
   const [tables, setTables] = useState([]);
 
-  console.log(reservations);
-
   /* ----- useEffect & loading API data ----- */
   // reservations
   useEffect(loadDashboard, [reservation_date]);
@@ -62,34 +60,13 @@ function Dashboard() {
 
   // tables
   useEffect(() => {
-    async function loadTable() {
+    async function loadTables() {
       const tableData = await listTables();
 
       setTables(tableData);
     }
-    loadTable();
+    loadTables();
   }, []);
-  // useEffect(() => {
-  //   const abortController = new AbortController();
-
-  //   async function loadTables() {
-  //     try {
-  //       const response = await fetch('http://localhost:5000/tables', {
-  //         signal: abortController.signal,
-  //       });
-  //       const tablesFromAPI = await response.json();
-  //       setTables(tablesFromAPI.data);
-  //     } catch (error) {
-  //       if (error.name === 'AbortError') {
-  //         console.log('Aborted');
-  //       } else {
-  //         throw error;
-  //       }
-  //     }
-  //   }
-  // loadTables();
-  // return () => abortController.abort();
-  // }, []);
 
   const tablesData = tables.map((table) => (
     <Table

@@ -7,6 +7,8 @@ import Reservation from '../reservations/Reservation';
 import Footer from '../layout/Footer';
 
 const Search = () => {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- state ----- */
   const [mobileNumber, setMobileNumber] = useState('');
   const [reservations, setReservations] = useState([]);
@@ -19,12 +21,12 @@ const Search = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const url = `http://localhost:5000/reservations?mobile_number=${mobileNumber}`;
+      const url = `${API_BASE_URL}/reservations?mobile_number=${mobileNumber}`;
       const response = await axios.get(url);
 
       setReservations(response.data.data);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   };
 

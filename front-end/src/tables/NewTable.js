@@ -7,6 +7,8 @@ import './NewTable.css';
 import Footer from '../layout/Footer';
 
 const NewTable = () => {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory ----- */
   const history = useHistory();
 
@@ -38,15 +40,15 @@ const NewTable = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    const url = 'http://localhost:5000/tables';
+    const url = `${API_BASE_URL}/tables`;
     const data = {
       data: formData,
     };
     axios
       .post(url, data)
       .then(() => history.push(`/dashboard`))
-      .catch((err) => {
-        console.error(err);
+      .catch((error) => {
+        throw error;
       });
     // history.push(`/dashboard`);
   };

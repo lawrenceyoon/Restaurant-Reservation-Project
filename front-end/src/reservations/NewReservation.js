@@ -1,9 +1,9 @@
 // dependencies
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 // local files
 import './NewReservation.css';
+import { createReservation } from '../utils/api';
 import { today } from '../utils/date-time';
 import ErrorAlert from '../layout/ErrorAlert';
 import formatReservationTime from '../utils/format-reservation-time';
@@ -144,17 +144,9 @@ const NewReservation = () => {
 
     setFormErrors(runFormValidation);
     if (!runFormValidation.length) {
-      try {
-        const url = 'http://localhost:5000/reservations';
-        const data = {
-          data: formData,
-        };
+      await createReservation(formData);
 
-        await axios.post(url, data);
-        history.push(`/dashboard/?date=${formData.reservation_date}`);
-      } catch (error) {
-        console.log(error);
-      }
+      history.push(`/dashboard/?date=${formData.reservation_date}`);
     }
   };
 

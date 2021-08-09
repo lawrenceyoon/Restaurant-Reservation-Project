@@ -1,10 +1,9 @@
 // dependencies
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 // local files
 import './Reservation.css';
-import { myListReservations, updateReservation } from '../utils/api';
+import { myListReservations, updateReservationStatus } from '../utils/api';
 
 const Reservation = ({ reservation, setReservations, reservation_date }) => {
   /* ----- event handlers ----- */
@@ -16,21 +15,17 @@ const Reservation = ({ reservation, setReservations, reservation_date }) => {
     // if cancel is clicked, do nothing
     if (!confirm) return;
     // if ok is clicked, set status to cancelled
-    try {
-      const data = {
-        data: {
-          status: 'cancelled',
-        },
-      };
+    const status = {
+      data: {
+        status: 'cancelled',
+      },
+    };
 
-      await updateReservation(reservation_id, data);
-      const reservationsData = await myListReservations({
-        date: reservation_date,
-      });
-      setReservations(reservationsData);
-    } catch (error) {
-      console.log(error);
-    }
+    await updateReservationStatus(reservation_id, status);
+    const reservationsData = await myListReservations({
+      date: reservation_date,
+    });
+    setReservations(reservationsData);
   };
 
   /* ----- render content ----- */

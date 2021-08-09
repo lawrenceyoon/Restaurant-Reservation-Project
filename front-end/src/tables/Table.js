@@ -25,7 +25,7 @@ const Table = ({ table, setTables }) => {
       const tableData = await listTables();
       setTables(tableData);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   };
 
