@@ -60,8 +60,8 @@
   }
 
   .NewReservation span {
-    justify-content: flex-end;
     display: flex;
+    justify-content: flex-end;
     width: 40%;
     font-size: 3.2em;
   }

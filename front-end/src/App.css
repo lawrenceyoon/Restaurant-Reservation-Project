@@ -241,6 +241,10 @@ img {
   }
 
   /* buttons */
+  .btn {
+    margin: 20px;
+  }
+
   .pink-btn {
     border: 1px solid var(--pink);
     background-color: var(--pink);

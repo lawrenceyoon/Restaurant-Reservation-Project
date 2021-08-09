@@ -56,6 +56,7 @@ const Reservation = ({ reservation }) => {
           <p className="card-text reservation-people">
             <strong>People:</strong> {reservation.people}
           </p>
+          {/* Only when reservation status is booked, show 3 buttons */}
           {reservation.status === 'booked' ? (
             <p className="card-text buttons">
               <Link to={`/reservations/${reservation.reservation_id}/seat`}>
@@ -63,23 +64,21 @@ const Reservation = ({ reservation }) => {
                   Seat
                 </button>
               </Link>
+              <Link to={`/reservations/${reservation.reservation_id}/edit`}>
+                <button className="btn brown-btn" type="button">
+                  Edit
+                </button>
+              </Link>
+              <button
+                data-reservation-id-cancel={reservation.reservation_id}
+                className="btn red-btn"
+                type="button"
+                onClick={() => handleCancelButton(reservation.reservation_id)}
+              >
+                Cancel
+              </button>
             </p>
           ) : null}
-          <p className="card-text buttons">
-            <Link to={`/reservations/${reservation.reservation_id}/edit`}>
-              <button className="btn brown-btn" type="button">
-                Edit
-              </button>
-            </Link>
-            <button
-              data-reservation-id-cancel={reservation.reservation_id}
-              className="btn red-btn"
-              type="button"
-              onClick={() => handleCancelButton(reservation.reservation_id)}
-            >
-              Cancel
-            </button>
-          </p>
         </div>
       </div>
     </div>

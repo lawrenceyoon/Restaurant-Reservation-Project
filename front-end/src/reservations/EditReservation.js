@@ -5,9 +5,10 @@ import axios from 'axios';
 // local files
 import './EditReservation.css';
 import ErrorAlert from '../layout/ErrorAlert';
-import Form from '../layout/Form';
 import { today } from '../utils/date-time';
 import formatReservationTime from '../utils/format-reservation-time';
+import Form from '../layout/Form';
+import Footer from '../layout/Footer';
 
 const EditReservation = () => {
   /* ----- useParams, useHistory ----- */
@@ -158,7 +159,7 @@ const EditReservation = () => {
   /* ----- render content ----- */
   return (
     <section className="EditReservation">
-      <h2>Current Reservation Info: </h2>
+      <h1>Current Reservation Info: </h1>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title reservation-name">
@@ -186,6 +187,7 @@ const EditReservation = () => {
         return <ErrorAlert key={error} error={error} />;
       })}
       {/* */}
+      <h2>Edit:</h2>
       {reservation.status === 'booked' ? (
         <Form
           formData={reservation}
@@ -193,6 +195,8 @@ const EditReservation = () => {
           handleFormSubmit={handleFormSubmit}
         />
       ) : null}
+
+      <Footer />
     </section>
   );
 };
