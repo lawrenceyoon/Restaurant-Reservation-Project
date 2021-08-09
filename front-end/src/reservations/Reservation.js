@@ -4,12 +4,9 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 // local files
 import './Reservation.css';
-import { listReservations } from '../utils/api';
+import { myListReservations, updateReservation } from '../utils/api';
 
-const Reservation = ({ reservation }) => {
-  /* ----- useHistory ----- */
-  const history = useHistory();
-
+const Reservation = ({ reservation, setReservations, reservation_date }) => {
   /* ----- event handlers ----- */
   const handleCancelButton = async (reservation_id) => {
     const confirm = window.confirm(
@@ -20,14 +17,17 @@ const Reservation = ({ reservation }) => {
     if (!confirm) return;
     // if ok is clicked, set status to cancelled
     try {
-      const reservationUrl = `http://localhost:5000/reservations/${reservation_id}/status`;
-      const statusData = {
+      const data = {
         data: {
           status: 'cancelled',
         },
       };
 
-      await axios.put(reservationUrl, statusData);
+      await updateReservation(reservation_id, data);
+      const reservationsData = await myListReservations({
+        date: reservation_date,
+      });
+      setReservations(reservationsData);
     } catch (error) {
       console.log(error);
     }

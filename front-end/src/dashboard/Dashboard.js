@@ -36,6 +36,8 @@ function Dashboard() {
   const [reservation_date, setReservation_date] = useState(date);
   const [tables, setTables] = useState([]);
 
+  console.log(reservations);
+
   /* ----- useEffect & loading API data ----- */
   // reservations
   useEffect(loadDashboard, [reservation_date]);
@@ -50,7 +52,12 @@ function Dashboard() {
   }
 
   const reservationsData = reservations.map((reservation) => (
-    <Reservation key={reservation.reservation_id} reservation={reservation} />
+    <Reservation
+      key={reservation.reservation_id}
+      reservation={reservation}
+      setReservations={setReservations}
+      reservation_date={reservation_date}
+    />
   ));
 
   // tables

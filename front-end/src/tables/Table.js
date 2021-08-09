@@ -2,14 +2,9 @@
 import React from 'react';
 // local files
 import './Table.css';
-import {
-  deleteTable,
-  updateReservation,
-  listTables,
-  myListReservations,
-} from '../utils/api';
+import { deleteTable, updateReservation, listTables } from '../utils/api';
 
-const Table = ({ table, setTables, setReservations, reservation_date }) => {
+const Table = ({ table, setTables }) => {
   /* ----- event handlers ----- */
   const handleFinishButton = async (table_id, reservation_id) => {
     const confirm = window.confirm(
@@ -19,14 +14,16 @@ const Table = ({ table, setTables, setReservations, reservation_date }) => {
     // if cancel is clicked, do nothing
     if (!confirm) return;
     try {
+      const data = {
+        data: {
+          status: 'finished',
+        },
+      };
+
       await deleteTable(table_id);
-      await updateReservation(reservation_id);
+      await updateReservation(reservation_id, data);
       const tableData = await listTables();
       setTables(tableData);
-      const reservationsData = await myListReservations({
-        date: reservation_date,
-      });
-      setReservations(reservationsData);
     } catch (error) {
       console.log(error);
     }

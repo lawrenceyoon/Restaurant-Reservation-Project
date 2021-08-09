@@ -107,15 +107,12 @@ export async function listTables() {
 
 export async function deleteTable(table_id) {
   const url = `${API_BASE_URL}/tables/${table_id}/seat`;
+
   return await axios.delete(url);
 }
 
-export async function updateReservation(reservation_id) {
+export async function updateReservation(reservation_id, data) {
   const url = `${API_BASE_URL}/reservations/${reservation_id}/status`;
-  const statusData = {
-    data: {
-      status: 'finished',
-    },
-  };
-  return await axios.put(url, statusData);
+
+  return await axios.put(url, data);
 }
