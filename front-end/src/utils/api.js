@@ -1,11 +1,17 @@
+// dependencies
+import axios from 'axios';
+
 /**
  * Defines the base URL for the API.
  * The default values is overridden by the `API_BASE_URL` environment variable.
  */
+
+// local files
 import formatReservationDate from './format-reservation-date';
 import formatReservationTime from './format-reservation-date';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
 /**
  * Defines the default headers for these functions to work with `json-server`
@@ -66,4 +72,50 @@ export async function listReservations(params, signal) {
   return await fetchJson(url, { headers, signal }, [])
     .then(formatReservationDate)
     .then(formatReservationTime);
+}
+
+export async function myListReservations(params) {
+  const url = new URL(`${API_BASE_URL}/reservations`);
+  Object.entries(params).forEach(([key, value]) =>
+    url.searchParams.append(key, value.toString())
+  );
+  // const url = `${API_BASE_URL}/reservations`;
+
+  try {
+    const awaited = await axios.get(url);
+
+    const formattedDate = formatReservationDate(awaited.data.data);
+    const formattedTime = formatReservationTime(formattedDate);
+
+    return formattedTime;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function listTables() {
+  const url = `${API_BASE_URL}/tables`;
+
+  try {
+    const awaited = await axios.get(url);
+
+    return awaited.data.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function deleteTable(table_id) {
+  const url = `${API_BASE_URL}/tables/${table_id}/seat`;
+  return await axios.delete(url);
+}
+
+export async function updateReservation(reservation_id) {
+  const url = `${API_BASE_URL}/reservations/${reservation_id}/status`;
+  const statusData = {
+    data: {
+      status: 'finished',
+    },
+  };
+  return await axios.put(url, statusData);
 }

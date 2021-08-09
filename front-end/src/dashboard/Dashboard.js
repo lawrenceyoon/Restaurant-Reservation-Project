@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 // local files
 import './Dashboard.css';
 import greenleaf from '../imgs/greenleaf.png';
+import { listTables } from '../utils/api';
 import useQuery from '../utils/useQuery';
 import ErrorAlert from '../layout/ErrorAlert';
 import { listReservations } from '../utils/api';
@@ -54,29 +55,43 @@ function Dashboard() {
 
   // tables
   useEffect(() => {
-    const abortController = new AbortController();
+    async function loadTable() {
+      const tableData = await listTables();
 
-    async function loadTables() {
-      try {
-        const response = await fetch('http://localhost:5000/tables', {
-          signal: abortController.signal,
-        });
-        const tablesFromAPI = await response.json();
-        setTables(tablesFromAPI.data);
-      } catch (error) {
-        if (error.name === 'AbortError') {
-          console.log('Aborted');
-        } else {
-          throw error;
-        }
-      }
+      setTables(tableData);
     }
-    loadTables();
-    return () => abortController.abort();
+    loadTable();
   }, []);
+  // useEffect(() => {
+  //   const abortController = new AbortController();
+
+  //   async function loadTables() {
+  //     try {
+  //       const response = await fetch('http://localhost:5000/tables', {
+  //         signal: abortController.signal,
+  //       });
+  //       const tablesFromAPI = await response.json();
+  //       setTables(tablesFromAPI.data);
+  //     } catch (error) {
+  //       if (error.name === 'AbortError') {
+  //         console.log('Aborted');
+  //       } else {
+  //         throw error;
+  //       }
+  //     }
+  //   }
+  // loadTables();
+  // return () => abortController.abort();
+  // }, []);
 
   const tablesData = tables.map((table) => (
-    <Table key={table.table_id} table={table} />
+    <Table
+      key={table.table_id}
+      table={table}
+      setTables={setTables}
+      setReservations={setReservations}
+      reservation_date={reservation_date}
+    />
   ));
 
   /* ----- event handlers ----- */

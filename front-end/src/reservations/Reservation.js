@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 // local files
 import './Reservation.css';
+import { listReservations } from '../utils/api';
 
 const Reservation = ({ reservation }) => {
   /* ----- useHistory ----- */
@@ -27,7 +28,6 @@ const Reservation = ({ reservation }) => {
       };
 
       await axios.put(reservationUrl, statusData);
-      history.go(0);
     } catch (error) {
       console.log(error);
     }
