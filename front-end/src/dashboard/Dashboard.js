@@ -69,13 +69,7 @@ function Dashboard() {
   }, []);
 
   const tablesData = tables.map((table) => (
-    <Table
-      key={table.table_id}
-      table={table}
-      setTables={setTables}
-      setReservations={setReservations}
-      reservation_date={reservation_date}
-    />
+    <Table key={table.table_id} table={table} />
   ));
 
   /* ----- event handlers ----- */

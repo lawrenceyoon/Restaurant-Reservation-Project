@@ -1,10 +1,16 @@
 // dependencies
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 // local files
 import './Table.css';
-import { deleteTable, updateReservation, listTables } from '../utils/api';
 
-const Table = ({ table, setTables }) => {
+const Table = ({ table }) => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+  /* ----- useHistory ----- */
+  const history = useHistory();
+
   /* ----- event handlers ----- */
   const handleFinishButton = async (table_id, reservation_id) => {
     const confirm = window.confirm(
@@ -14,18 +20,20 @@ const Table = ({ table, setTables }) => {
     // if cancel is clicked, do nothing
     if (!confirm) return;
     try {
-      const data = {
+      // if ok is clicked, delete reservation_id from the table
+      const tableUrl = `${API_BASE_URL}/tables/${table_id}/seat`;
+      const reservationUrl = `${API_BASE_URL}/reservations/${reservation_id}/status`;
+      const statusData = {
         data: {
           status: 'finished',
         },
       };
 
-      await deleteTable(table_id);
-      await updateReservation(reservation_id, data);
-      const tableData = await listTables();
-      setTables(tableData);
+      await axios.delete(tableUrl);
+      await axios.put(reservationUrl, statusData);
+      history.go(0);
     } catch (error) {
-      throw error;
+      console.log(error);
     }
   };
 
