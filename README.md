@@ -10,15 +10,32 @@ A full-stack application built for owners who want to manage their reservations 
 
 https://restaurant-fullstack-frontend.herokuapp.com/dashboard
 
+- Endpoints:
+  /dashboard (main homepage)
+  /dashboard/?date=2021-08-09 (shows reservations for that specific date- in this case for Aug 9, 2021)
+  /reservations (redirects to dashboard)
+  /reservations/new (create a new reservation)
+  /reservations/:reservation_id/seat (seat a 'booked' reservation to a table)
+  /reservations/:reservation_id/edit (edit a specific reservation - can only edit 'booked' reservations)
+  /tables/new (create a new table)
+  /search (search for past, current, future reservations with matching phone number)
+  /otherRoutes (all other routes will display a Not Found page)
+
 #### Back-End
 
 https://restaurant-fullstack-backend.herokuapp.com/tables
 
 ### Development:
 
-### Front-End && Back-End
+on main dir, run => npm run start:dev (starts up both the front-end and back-end)
 
-on main dir, run npm run start:dev. This will both start up the front-end and back-end via concurrently. Front-end is accessible through localhost:3000 and back-end is accessible through localhost:5000.
+#### Front-End
+
+localhost:3000
+
+#### Back-End
+
+localhost:5000
 
 ## Context
 

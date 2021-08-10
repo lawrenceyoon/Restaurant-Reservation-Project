@@ -1,4 +1,8 @@
+// dependencies
 import React from 'react';
+// local files
+import './NotFound.css';
+import Footer from './Footer';
 
 /**
  * Defines the "Not Found" page that is displayed for any unmatched route.
@@ -11,6 +15,8 @@ const NotFound = () => {
   return (
     <div className="NotFound">
       <h1>Not Found</h1>
+
+      <Footer />
     </div>
   );
 };
