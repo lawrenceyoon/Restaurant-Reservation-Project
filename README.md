@@ -15,25 +15,39 @@ Production: https://restaurant-fullstack-frontend.herokuapp.com/dashboard
 Development: localhost:3000
 
 - Endpoints:
+  <br>
   /dashboard (main homepage)
+  <br>
   /dashboard/?date=2021-08-09 (shows reservations for that specific date- in this case for Aug 9, 2021)
+  <br>
   /reservations (redirects to dashboard)
+  <br>
   /reservations/new (create a new reservation)
+  <br>
   /reservations/:reservation_id/seat (seat a 'booked' reservation to a table)
+  <br>
   /reservations/:reservation_id/edit (edit a specific reservation - can only edit 'booked' reservations)
+  <br>
   /tables/new (create a new table)
+  <br>
   /search (search for past, current, future reservations with matching phone number)
+  <br>
   /otherRoutes (all other routes will display a Not Found page)
 
 #### Back-End
 
-Production: https://restaurant-fullstack-backend.herokuapp.com (There is no endpoint here, so will say "Path not found: /")
-Development: localhost:5000 (There is no endpoint here, so will say "Path not found: /")
+Production: https://restaurant-fullstack-backend.herokuapp.com
+<br>
+Development: localhost:5000
 
 - Endpoints & CRUDL with RESTful API best practices:
+  <br>
   /reservations (list, create)
+  <br>
   /reservations/:reservation_id (read, update)
+  <br>
   /reservations/:reservation_id/status (update)
+  <br>
 
   /tables (list, create)
   /tables/:table_id (read)
