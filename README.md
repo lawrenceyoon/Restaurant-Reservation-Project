@@ -126,8 +126,17 @@ I made 8 user stories, based on what a real world project would be like. Here th
    2. Display 'No Reservations Found' if no records are found.
       ![no reservations found](/screenshot-imgs/no-reservations-found.png?raw=true)
 
-8.
+8. A restaurant manager wants to modify a reservation if a customer calls to change/cancel their reservations. This is so that reservations are up to date and accurate...
+
+   1. /dashboard and /search page shows 'edit' button next to each reservation. Clicking edit will navigate user to /reservations/:reservation_id/edit page. Edit page shows current reservation, and form to make changes when 'submit' is clicked. Cancel returns to previous page.
+      ![hello there](/screenshot-imgs/hello-there.png?raw=true)
+      ![current reservation info](/screenshot-imgs/current-reservation-info.png?raw=true)
+      ![edit reservation](/screenshot-imgs/edit.png?raw=true)
+   2. Display a cancel button next to each reservation. Cancel button will have a confirmation window. Clicking 'yes' sets reservation status to cancelled and removes from dashboard. Clicking 'cancel' makes no changes.
+      ![cancel window](/screenshot-imgs/cancel-window.png?raw=true)
+   3. Only status of 'booked' can be edited; remove 'edit' or 'cancel' if reservation is already seated
+      ![seated and booked](/screenshot-imgs/seated-and-booked.png?raw=true)
 
 ## Tech Stack
 
-HTML, CSS (Flexbox + Bootstrap), JavaScript (ReactJS + Hooks), NodeJS, Express + Knex, PostgreSQL (ElephantSQL, DBeaver) - Deployed via Heroku
+HTML, CSS (Flexbox + Bootstrap), JavaScript (ReactJS + Hooks), NodeJS (Express + Knex), PostgreSQL (ElephantSQL, DBeaver) - Deployed via Heroku
