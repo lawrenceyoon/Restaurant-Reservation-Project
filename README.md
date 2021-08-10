@@ -47,7 +47,8 @@ This project is a monorepo (both client and backend folders under same directory
 
 I made 8 user stories, based on what a real world project would be like. Here the user stories and screenshots:
 
-1. A restaurant manager wants to create a new reservation when a customer calls, so he/she will know how many customers will arrive at the restaurant on a given day.
+1. A restaurant manager wants to create a new reservation when a customer calls, so he/she will know how many customers will arrive at the restaurant on a given day...
+
    1. The /reservations/new page has all the required fields. Mobile number must be numbers in format XXX-XXXX OR XXX-XXXX, number of people must be at least 1:
       ![New Reservation fields](/screenshot-imgs/new-reservation.png?raw=true 'Fields')
    2. Clicking on submit saves new reservation, then display /dashboard for the date the new reservation was made
@@ -55,6 +56,21 @@ I made 8 user stories, based on what a real world project would be like. Here th
    4. /dashboard page lists all reservations for that specific date.
       ![08-11-2021](/screenshot-imgs/08-11-2021.png?raw=true)
       ![proper reservations](/screenshot-imgs/reservations-for-proper-date.png?raw=true)
+   5. Display next, previous, today buttons that allow user to go to other dates
+      ![previous, next, today buttons](/screenshot-imgs/previous-next-today-btns.png?raw=true)
+   6. /reservations API has same validations as above and returns 400 when validation error occurs
+
+2. A restaurant manager waqnts to allow reservations to be created on a day we're open, so users do not accidentally create a reservation for days we are closed...
+
+   1. /reservations/new page displays errors messages if reservation falls on a Tuesday (closed) or reservation date is in the past
+      ![closed on Tuesdays](/screenshot-imgs/closed-tuesdays.png?raw=true)
+      ![today or future date](/screenshot-imgs/today-or-future.png?raw=true)
+
+3. A restaurant manager wants to allow reservations to be created during business hours, up to 60 minutes before closing so users do not accidentally create reservation for a time we cannot accommodate...
+   1. /reservations/new page displays errors messages if reservation time is before 10:30AM, after 9:30PM, reservation date + time are in the past (if date is for today, only time that's greater than now is allowed)
+      ![between working hours](/screenshot-imgs/between-hours.png?raw=true)
+      ![today, but later time](/screenshot-imgs/today-later-time.png?raw=true)
+   2. /reservations API has same validations as above and returns 400 when validation error occurs
 
 ## Tech Stack
 
