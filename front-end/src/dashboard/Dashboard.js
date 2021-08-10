@@ -4,10 +4,10 @@ import { useHistory } from 'react-router-dom';
 // local files
 import './Dashboard.css';
 import greenleaf from '../imgs/greenleaf.png';
-import { listReservations } from '../utils/api';
-import ErrorAlert from '../layout/ErrorAlert';
-import { today, next, previous } from '../utils/date-time';
 import useQuery from '../utils/useQuery';
+import ErrorAlert from '../layout/ErrorAlert';
+import { listReservations } from '../utils/api';
+import { today, next, previous } from '../utils/date-time';
 import Reservation from '../reservations/Reservation';
 import Table from '../tables/Table';
 import Footer from '../layout/Footer';
@@ -19,8 +19,6 @@ import Footer from '../layout/Footer';
  */
 
 function Dashboard() {
-  const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory, useQuery ----- */
   const history = useHistory();
   // if date props (today) is not passed in
@@ -60,7 +58,7 @@ function Dashboard() {
 
     async function loadTables() {
       try {
-        const response = await fetch(`${API_BASE_URL}/tables`, {
+        const response = await fetch('http://localhost:5000/tables', {
           signal: abortController.signal,
         });
         const tablesFromAPI = await response.json();

@@ -10,8 +10,6 @@ import formatReservationTime from '../utils/format-reservation-time';
 import Footer from '../layout/Footer';
 
 const NewReservation = () => {
-  const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory ----- */
   const history = useHistory();
 
@@ -20,8 +18,8 @@ const NewReservation = () => {
     first_name: '',
     last_name: '',
     mobile_number: '',
-    reservation_date: today(),
-    reservation_time: '18:00:00',
+    reservation_date: '',
+    reservation_time: '',
     people: 1,
   };
 
@@ -147,7 +145,7 @@ const NewReservation = () => {
     setFormErrors(runFormValidation);
     if (!runFormValidation.length) {
       try {
-        const url = `${API_BASE_URL}/reservations`;
+        const url = 'http://localhost:5000/reservations';
         const data = {
           data: formData,
         };
@@ -168,7 +166,7 @@ const NewReservation = () => {
         return <ErrorAlert key={error} error={error} />;
       })}
       {/* */}
-      <h2>New Reservation:</h2>
+      <h1>New Reservation:</h1>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="first_name">

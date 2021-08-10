@@ -11,8 +11,6 @@ import Form from '../layout/Form';
 import Footer from '../layout/Footer';
 
 const EditReservation = () => {
-  const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useParams, useHistory ----- */
   const { reservation_id } = useParams();
   const history = useHistory();
@@ -28,7 +26,7 @@ const EditReservation = () => {
     async function loadReservation() {
       try {
         const response = await fetch(
-          `${API_BASE_URL}/reservations/${reservation_id}`,
+          `http://localhost:5000/reservations/${reservation_id}`,
           {
             signal: abortController.signal,
           }
@@ -45,7 +43,7 @@ const EditReservation = () => {
     }
     loadReservation();
     return () => abortController.abort();
-  }, []);
+  }, [reservation_id]);
 
   /* ----- helper functions ----- */
   // checks if mobile_number is in proper format: all numbers XXX-XXX-XXXX

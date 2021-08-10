@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 // dependencies
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -9,8 +8,6 @@ import './ReservationSeat.css';
 import Footer from '../layout/Footer';
 
 const ReservationSeat = () => {
-  const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory, useParams ----- */
   const history = useHistory();
   const { reservation_id } = useParams();
@@ -34,7 +31,7 @@ const ReservationSeat = () => {
 
     async function loadReservations() {
       try {
-        const response = await fetch(`${API_BASE_URL}/reservations/`, {
+        const response = await fetch(`http://localhost:5000/reservations/`, {
           signal: abortController.signal,
         });
         const reservationsFromAPI = await response.json();
@@ -57,7 +54,7 @@ const ReservationSeat = () => {
 
     async function loadTables() {
       try {
-        const response = await fetch(`${API_BASE_URL}/tables`, {
+        const response = await fetch('http://localhost:5000/tables', {
           signal: abortController.signal,
         });
         const tablesFromAPI = await response.json();
@@ -136,8 +133,8 @@ const ReservationSeat = () => {
     if (!runErrorValidation.length) {
       try {
         // do post request here
-        const tablesUrl = `${API_BASE_URL}/tables/${formData.table_id}/seat`;
-        const reservationUrl = `${API_BASE_URL}/reservations/${reservation_id}/status`;
+        const tablesUrl = `http://localhost:5000/tables/${formData.table_id}/seat`;
+        const reservationUrl = `http://localhost:5000/reservations/${reservation_id}/status`;
         const reservationIdData = {
           data: {
             reservation_id,
