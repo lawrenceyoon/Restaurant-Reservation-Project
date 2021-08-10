@@ -9,18 +9,25 @@ Install restaurant-reservation-project with npm
 Clone the project
 
 ```bash
-https://github.com/lawrenceyoon/Restaurant-Reservation-Project.git
+   https://github.com/lawrenceyoon/Restaurant-Reservation-Project.git
 ```
 
 Go to project directory
 
-<!-- ````bash
-cd restaurant-reservation-project
-```` -->
+```bash
+   cd restaurant-reservation-project
+```
 
-npm install
-npm run start:dev (starts up both client & server)
+Install dependencies
 
+```bash
+   npm install
+```
+
+Start the server (starts up both client & server)
+
+```bash
+   npm run start:dev
 ```
 
 ## Deployed Links / development Links
@@ -163,4 +170,7 @@ I made 8 user stories, based on what a real world project would be like. Here th
 **Server:** NodeJS, Express + Knex, PostgreSQL (ElephantSQL + DBeaver)
 
 **Deployment:** Heroku
+
+```
+
 ```
