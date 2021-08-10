@@ -11,6 +11,7 @@ A full-stack application built for owners who want to manage their reservations 
 #### Front-End
 
 Production: https://restaurant-fullstack-frontend.herokuapp.com/dashboard
+<br>
 Development: localhost:3000
 
 - Endpoints:
@@ -47,8 +48,13 @@ This project is a monorepo (both client and backend folders under same directory
 I made 8 user stories, based on what a real world project would be like. Here the user stories and screenshots:
 
 1. A restaurant manager wants to create a new reservation when a customer calls, so he/she will know how many customers will arrive at the restaurant on a given day.
-   1. The /reservations/new page has all the required fields:
+   1. The /reservations/new page has all the required fields. Mobile number must be numbers in format XXX-XXXX OR XXX-XXXX, number of people must be at least 1:
       ![New Reservation fields](/screenshot-imgs/new-reservation.png?raw=true 'Fields')
+   2. Clicking on submit saves new reservation, then display /dashboard for the date the new reservation was made
+   3. Cancel button returns user to previous page
+   4. /dashboard page lists all reservations for that specific date.
+      ![08-11-2021](/screenshot-imgs/08-11-2021.png?raw=true)
+      ![proper reservations](/screenshot-imgs/reservations-for-proper-date.png?raw=true)
 
 ## Tech Stack
 
