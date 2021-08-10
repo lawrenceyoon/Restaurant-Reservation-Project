@@ -36,17 +36,19 @@ Development: localhost:5000 (There is no endpoint here, so will say "Path not fo
 
   /tables (list, create)
   /tables/:table_id (read)
-  /tables/table_id/seat (update, delete)
+  /tables/table_id/seat/ (update, delete)
 
 ## Context
 
 This project is a monorepo (both client and backend folders under same directory) that was built on my own to demonstrate my knowledge of a full-stack application. Properly routed to the API backend, it does all CRUDL (create, read, update, delete, list) following best RESTful API practices. This project (had a blast creating this), taught me key concepts on how the front-end connects to the back-end, how API calls are made as a request to the backend, and received as a response in the client.
 
-I made 8 user stories, based on what a real world project would be like. Here are my listed steps:
+## Steps
 
-<ul>
-    <li></li>
-<ul>
+I made 8 user stories, based on what a real world project would be like. Here the user stories and screenshots:
+
+1. A restaurant manager wants to create a new reservation when a customer calls, so he/she will know how many customers will arrive at the restaurant on a given day.
+   1. The /reservations/new page has all the required fields:
+      ![New Reservation fields](/screenshot-imgs/new-reservation.png?raw=true 'Fields')
 
 ## Tech Stack
 
