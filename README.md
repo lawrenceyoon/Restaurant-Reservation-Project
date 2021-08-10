@@ -186,8 +186,8 @@ I made 8 user stories, based on what a real world project would be like. Here th
 
 ## Tech Stack
 
-**Client:** HTML, CSS (Flexbox + Bootstrap), JavaScript (ReactJS + Hooks)
+**Client:** HTML, CSS, JavaScript, React
 
-**Server:** NodeJS, Express + Knex, PostgreSQL (ElephantSQL + DBeaver)
+**Server:** NodeJS, Express, PostgreSQL
 
 **Deployment:** Heroku
