@@ -2,11 +2,30 @@
 
 A full-stack application built for owners who want to manage their reservations and tables at their restaurant.
 
+## Installation
+
+Install restaurant-reservation-project with npm
+
+Clone the project
+
+```bash
+https://github.com/lawrenceyoon/Restaurant-Reservation-Project.git
+```
+
+Go to project directory
+
+<!-- ````bash
+cd restaurant-reservation-project
+```` -->
+
+npm install
+npm run start:dev (starts up both client & server)
+
+```
+
 ## Deployed Links / development Links
 
 ### Production/Development Links & Endpoints:
-
-- on main dir, run => npm run start:dev for development (starts up both the front-end and back-end)
 
 #### Front-End
 
@@ -139,4 +158,9 @@ I made 8 user stories, based on what a real world project would be like. Here th
 
 ## Tech Stack
 
-HTML, CSS (Flexbox + Bootstrap), JavaScript (ReactJS + Hooks), NodeJS (Express + Knex), PostgreSQL (ElephantSQL, DBeaver) - Deployed via Heroku
+**Client:** HTML, CSS (Flexbox + Bootstrap), JavaScript (ReactJS + Hooks)
+
+**Server:** NodeJS, Express + Knex, PostgreSQL (ElephantSQL + DBeaver)
+
+**Deployment:** Heroku
+```
