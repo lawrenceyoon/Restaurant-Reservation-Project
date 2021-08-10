@@ -48,9 +48,10 @@ Development: localhost:5000
   <br>
   /reservations/:reservation_id/status (update)
   <br>
-
   /tables (list, create)
+  <br>
   /tables/:table_id (read)
+  <br>
   /tables/table_id/seat/ (update, delete)
 
 ## Context
@@ -88,7 +89,44 @@ I made 8 user stories, based on what a real world project would be like. Here th
       ![today, but later time](/screenshot-imgs/today-later-time.png?raw=true)
    2. /reservations API has same validations as above and returns 400 when validation error occurs
 
-4. asdf
+4. A restaurant manager wants to seat an existing restaurant at a table, so he/she will know which tables are occupied and free...
+
+   1. /tables/new page will have table name and capacity as fields. A submit button (saves the new table) and a cancel button that returns user to previous page.
+      ![tables new page](/screenshot-imgs/table-new.png?raw=true)
+   2. /dashboard page will display list or all reservations in one area, and each reservation has a 'seat' button. Display a list of all tables in another area, with status of 'free' or 'occupied'
+      ![dashboard](/screenshot-imgs/dashboard.png?raw=true);
+      ![proper reservations](/screenshot-imgs/reservations-for-proper-date.png?raw=true)
+      ![tables](/screenshot-imgs/tables.png?raw=true)
+   3. /reservations/:reservation_id/seat page has each table name and capacity as an option. A submit button assigns table to reservation and displays /dashboard, a cancel button that returns user to previous page.
+      ![select table](/screenshot-imgs/select-table.png?raw=true)
+   4. Reservation with people cannot be assigned if it's more than capacity of table
+      ![exceeds capacity](/screenshot-imgs/exceeds-capacity.png?raw=true)
+   5. Reservation cannot be seated if table is already taken
+      ![already reserved](/screenshot-imgs/already-reserved.png?raw=true)
+   6. /tables API has same validations as above and returns 400 when validation error occurs
+
+5. A restaurant manager wants to free up an occupied table when guests leave, so he/she can seat new guests at the table...
+
+   1. /dashboard page displays a 'finish' button on each 'occupied' table. Clicking finish will display a confirmation: if 'yes' is clicked, delete the table assignment. Cancel will do nothing.
+      ![bar-1 finish](/screenshot-imgs/bar-1-finish.png?raw=true)
+      ![bar-1 confirmation](/screenshot-imgs/bar-1-confirmation.png?raw=true)
+
+6. A restaurant manager wants a reservation to have a status of 'booked', 'seated', or 'finished,' so users can see which parties are seated; finished reservations must be hidden from dashboard...
+
+   1. /dashboard page displays status of reservation. Creating new reservation has default status of 'booked.'
+   2. display 'seat' button only when reservation status is 'booked' - clicking seat button changes status to 'seated' and hides seat button.
+      ![seated and booked reservations](/screenshot-imgs/seated-and-booked.png?raw=true)
+   3. clicking 'finish' button changes reservation status to 'finished' and removes reservation from dashboard
+      ![hello there](/screenshot-imgs/hello-there.png?raw=true)
+
+7. A restaurant manager wants to search for a reservation by phone number (partial or complete) so he/she can quickly access the customer's reservation when the guest(s) call about their reservation...
+
+   1. /search page displays search box with a 'find' button next to it. Then will display all matched phone reservations.
+      ![search by phone number](/screenshot-imgs/search.png?raw=true)
+   2. Display 'No Reservations Found' if no records are found.
+      ![no reservations found](/screenshot-imgs/no-reservations-found.png?raw=true)
+
+8.
 
 ## Tech Stack
 
