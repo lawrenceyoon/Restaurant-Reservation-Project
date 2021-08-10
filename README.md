@@ -82,7 +82,7 @@ Development: localhost:5000
 
 ## Context
 
-This project is a monorepo (both client and backend folders under same directory) that was built on my own to demonstrate my knowledge of a full-stack application. Properly routed to the API backend, it does all CRUDL (create, read, update, delete, list) following best RESTful API practices. This project (had a blast creating this), taught me key concepts on how the front-end connects to the back-end, how API calls are made as a request to the backend, and received as a response in the client.
+This project is a monorepo (both client and backend folders under same directory) that was built on my own to demonstrate my knowledge of a full-stack application. Properly routed to the API backend, it does all CRUDL (create, read, update, delete, list) following best RESTful API practices. This project (had a blast creating this), taught me key concepts on how the front-end connects to the back-end, how API calls are made as a request to the backend, and received as a response in the client. I made 4 relational databases: for development, testing, preview, and production.
 
 ## Steps
 
@@ -128,6 +128,7 @@ I made 8 user stories, based on what a real world project would be like. Here th
    4. Reservation with people cannot be assigned if it's more than capacity of table
       ![exceeds capacity](/screenshot-imgs/exceeds-capacity.png?raw=true)
    5. Reservation cannot be seated if table is already taken
+      <br>
       ![already reserved](/screenshot-imgs/already-reserved.png?raw=true)
    6. /tables API has same validations as above and returns 400 when validation error occurs
 
@@ -135,6 +136,7 @@ I made 8 user stories, based on what a real world project would be like. Here th
 
    1. /dashboard page displays a 'finish' button on each 'occupied' table. Clicking finish will display a confirmation: if 'yes' is clicked, delete the table assignment. Cancel will do nothing.
       ![bar-1 finish](/screenshot-imgs/bar-1-finish.png?raw=true)
+      <br>
       ![bar-1 confirmation](/screenshot-imgs/bar-1-confirmation.png?raw=true)
 
 6. A restaurant manager wants a reservation to have a status of 'booked', 'seated', or 'finished,' so users can see which parties are seated; finished reservations must be hidden from dashboard...
@@ -159,6 +161,7 @@ I made 8 user stories, based on what a real world project would be like. Here th
       ![current reservation info](/screenshot-imgs/current-reservation-info.png?raw=true)
       ![edit reservation](/screenshot-imgs/edit.png?raw=true)
    2. Display a cancel button next to each reservation. Cancel button will have a confirmation window. Clicking 'yes' sets reservation status to cancelled and removes from dashboard. Clicking 'cancel' makes no changes.
+      <br>
       ![cancel window](/screenshot-imgs/cancel-window.png?raw=true)
    3. Only status of 'booked' can be edited; remove 'edit' or 'cancel' if reservation is already seated
       ![seated and booked](/screenshot-imgs/seated-and-booked.png?raw=true)
@@ -170,7 +173,3 @@ I made 8 user stories, based on what a real world project would be like. Here th
 **Server:** NodeJS, Express + Knex, PostgreSQL (ElephantSQL + DBeaver)
 
 **Deployment:** Heroku
-
-```
-
-```
