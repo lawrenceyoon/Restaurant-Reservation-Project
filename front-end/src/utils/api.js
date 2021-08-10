@@ -1,12 +1,7 @@
-// dependencies
-import axios from 'axios';
-
 /**
  * Defines the base URL for the API.
  * The default values is overridden by the `API_BASE_URL` environment variable.
  */
-
-// local files
 import formatReservationDate from './format-reservation-date';
 import formatReservationTime from './format-reservation-date';
 
@@ -63,60 +58,6 @@ async function fetchJson(url, options, onCancel) {
  *  a promise that resolves to a possibly empty array of reservation saved in the database.
  */
 
-/* ----- RESERVATIONS ----- */
-// create reservation
-export async function createReservation(data) {
-  const url = `${API_BASE_URL}/reservations`;
-  const dataFormat = {
-    data,
-  };
-
-  try {
-    await axios.post(url, dataFormat);
-  } catch (error) {
-    throw error;
-  }
-}
-
-// read reservation
-export async function readReservation(reservation_id) {
-  const url = `${API_BASE_URL}/reservations/${reservation_id}`;
-
-  try {
-    const awaited = await axios.get(url);
-
-    return awaited.data.data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-// update reservation
-export async function updateReservationStatus(reservation_id, status) {
-  const url = `${API_BASE_URL}/reservations/${reservation_id}/status`;
-
-  try {
-    const awaited = await axios.put(url, status);
-
-    return awaited.data.data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export async function updateReservation(reservation_id, data) {
-  const url = `${API_BASE_URL}/reservations/${reservation_id}`;
-
-  try {
-    const awaited = await axios.put(url, data);
-
-    return awaited.data.data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-// list reservations
 export async function listReservations(params, signal) {
   const url = new URL(`${API_BASE_URL}/reservations`);
   Object.entries(params).forEach(([key, value]) =>
@@ -126,50 +67,4 @@ export async function listReservations(params, signal) {
   return await fetchJson(url, { headers, signal }, [])
     .then(formatReservationDate)
     .then(formatReservationTime);
-}
-
-export async function myListReservations(params) {
-  const url = new URL(`${API_BASE_URL}/reservations`);
-
-  Object.entries(params).forEach(([key, value]) =>
-    url.searchParams.append(key, value.toString())
-  );
-
-  try {
-    const awaited = await axios.get(url);
-
-    const formattedDate = formatReservationDate(awaited.data.data);
-    const formattedTime = formatReservationTime(formattedDate);
-
-    return formattedTime;
-  } catch (error) {
-    throw error;
-  }
-}
-
-/* ----- TABLES ----- */
-// list tables
-export async function listTables() {
-  const url = `${API_BASE_URL}/tables`;
-
-  try {
-    const awaited = await axios.get(url);
-
-    return awaited.data.data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-// delete table
-export async function deleteTable(table_id) {
-  const url = `${API_BASE_URL}/tables/${table_id}/seat`;
-
-  try {
-    const awaited = await axios.delete(url);
-
-    return awaited.data.data;
-  } catch (error) {
-    throw error;
-  }
 }

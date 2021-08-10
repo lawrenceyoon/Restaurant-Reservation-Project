@@ -1,15 +1,17 @@
 // dependencies
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 // local files
 import './NewReservation.css';
-import { createReservation } from '../utils/api';
 import { today } from '../utils/date-time';
 import ErrorAlert from '../layout/ErrorAlert';
 import formatReservationTime from '../utils/format-reservation-time';
 import Footer from '../layout/Footer';
 
 const NewReservation = () => {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory ----- */
   const history = useHistory();
 
@@ -18,8 +20,8 @@ const NewReservation = () => {
     first_name: '',
     last_name: '',
     mobile_number: '',
-    reservation_date: '',
-    reservation_time: '',
+    reservation_date: today(),
+    reservation_time: '18:00:00',
     people: 1,
   };
 
@@ -144,9 +146,17 @@ const NewReservation = () => {
 
     setFormErrors(runFormValidation);
     if (!runFormValidation.length) {
-      await createReservation(formData);
+      try {
+        const url = `${API_BASE_URL}/reservations`;
+        const data = {
+          data: formData,
+        };
 
-      history.push(`/dashboard/?date=${formData.reservation_date}`);
+        await axios.post(url, data);
+        history.push(`/dashboard/?date=${formData.reservation_date}`);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -158,7 +168,7 @@ const NewReservation = () => {
         return <ErrorAlert key={error} error={error} />;
       })}
       {/* */}
-      <h1>New Reservation:</h1>
+      <h2>New Reservation:</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="first_name">

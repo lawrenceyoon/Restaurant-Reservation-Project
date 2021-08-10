@@ -1,11 +1,16 @@
 // dependencies
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 // local files
 import './Reservation.css';
-import { myListReservations, updateReservationStatus } from '../utils/api';
 
-const Reservation = ({ reservation, setReservations, reservation_date }) => {
+const Reservation = ({ reservation }) => {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+  /* ----- useHistory ----- */
+  const history = useHistory();
+
   /* ----- event handlers ----- */
   const handleCancelButton = async (reservation_id) => {
     const confirm = window.confirm(
@@ -15,17 +20,19 @@ const Reservation = ({ reservation, setReservations, reservation_date }) => {
     // if cancel is clicked, do nothing
     if (!confirm) return;
     // if ok is clicked, set status to cancelled
-    const status = {
-      data: {
-        status: 'cancelled',
-      },
-    };
+    try {
+      const reservationUrl = `${API_BASE_URL}/reservations/${reservation_id}/status`;
+      const statusData = {
+        data: {
+          status: 'cancelled',
+        },
+      };
 
-    await updateReservationStatus(reservation_id, status);
-    const reservationsData = await myListReservations({
-      date: reservation_date,
-    });
-    setReservations(reservationsData);
+      await axios.put(reservationUrl, statusData);
+      history.go(0);
+    } catch (error) {
+      throw error;
+    }
   };
 
   /* ----- render content ----- */

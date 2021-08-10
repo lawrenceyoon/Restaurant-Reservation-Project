@@ -1,16 +1,18 @@
 // dependencies
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import axios from 'axios';
 // local files
 import './EditReservation.css';
 import ErrorAlert from '../layout/ErrorAlert';
-import { readReservation, updateReservation } from '../utils/api';
 import { today } from '../utils/date-time';
 import formatReservationTime from '../utils/format-reservation-time';
 import Form from '../layout/Form';
 import Footer from '../layout/Footer';
 
 const EditReservation = () => {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useParams, useHistory ----- */
   const { reservation_id } = useParams();
   const history = useHistory();
@@ -21,13 +23,29 @@ const EditReservation = () => {
 
   /* ----- useEffect & loading API data ----- */
   useEffect(() => {
-    async function loadReservation() {
-      const reservationData = await readReservation(reservation_id);
+    const abortController = new AbortController();
 
-      setReservation(reservationData);
+    async function loadReservation() {
+      try {
+        const response = await fetch(
+          `${API_BASE_URL}/reservations/${reservation_id}`,
+          {
+            signal: abortController.signal,
+          }
+        );
+        const reservationFromAPI = await response.json();
+        setReservation(reservationFromAPI.data);
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          console.log('Aborted');
+        } else {
+          throw error;
+        }
+      }
     }
     loadReservation();
-  }, [reservation_id]);
+    return () => abortController.abort();
+  }, []);
 
   /* ----- helper functions ----- */
   // checks if mobile_number is in proper format: all numbers XXX-XXX-XXXX
@@ -126,13 +144,17 @@ const EditReservation = () => {
 
     setFormErrors(runFormValidation);
     if (!runFormValidation.length) {
-      const data = {
-        data: reservation,
-      };
+      try {
+        const url = `http://localhost:5000/reservations/${reservation.reservation_id}`;
+        const data = {
+          data: reservation,
+        };
 
-      await updateReservation(reservation.reservation_id, data);
-      setReservation(reservation);
-      history.push(`/dashboard/?date=${reservation.reservation_date}`);
+        await axios.put(url, data);
+        history.push(`/dashboard/?date=${reservation.reservation_date}`);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
