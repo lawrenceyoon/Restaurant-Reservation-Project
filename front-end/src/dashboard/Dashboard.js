@@ -4,11 +4,10 @@ import { useHistory } from 'react-router-dom';
 // local files
 import './Dashboard.css';
 import greenleaf from '../imgs/greenleaf.png';
-import { listTables } from '../utils/api';
-import useQuery from '../utils/useQuery';
-import ErrorAlert from '../layout/ErrorAlert';
 import { listReservations } from '../utils/api';
+import ErrorAlert from '../layout/ErrorAlert';
 import { today, next, previous } from '../utils/date-time';
+import useQuery from '../utils/useQuery';
 import Reservation from '../reservations/Reservation';
 import Table from '../tables/Table';
 import Footer from '../layout/Footer';
@@ -50,22 +49,30 @@ function Dashboard() {
   }
 
   const reservationsData = reservations.map((reservation) => (
-    <Reservation
-      key={reservation.reservation_id}
-      reservation={reservation}
-      setReservations={setReservations}
-      reservation_date={reservation_date}
-    />
+    <Reservation key={reservation.reservation_id} reservation={reservation} />
   ));
 
   // tables
   useEffect(() => {
-    async function loadTables() {
-      const tableData = await listTables();
+    const abortController = new AbortController();
 
-      setTables(tableData);
+    async function loadTables() {
+      try {
+        const response = await fetch('http://localhost:5000/tables', {
+          signal: abortController.signal,
+        });
+        const tablesFromAPI = await response.json();
+        setTables(tablesFromAPI.data);
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          console.log('Aborted');
+        } else {
+          throw error;
+        }
+      }
     }
     loadTables();
+    return () => abortController.abort();
   }, []);
 
   const tablesData = tables.map((table) => (
