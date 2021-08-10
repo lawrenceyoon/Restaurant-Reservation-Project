@@ -131,7 +131,6 @@ I made 8 user stories, based on what a real world project would be like. Here th
 
    1. /reservations/new page displays errors messages if reservation time is before 10:30AM, after 9:30PM, reservation date + time are in the past (if date is for today, only time that's greater than now is allowed)
       ![between working hours](/screenshot-imgs/between-hours.png?raw=true)
-      ![today, but later time](/screenshot-imgs/today-later-time.png?raw=true)
    2. /reservations API has same validations as above and returns 400 when validation error occurs
 
 4. A restaurant manager wants to seat an existing restaurant at a table, so he/she will know which tables are occupied and free...
