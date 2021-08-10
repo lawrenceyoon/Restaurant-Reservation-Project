@@ -84,6 +84,25 @@ Development: localhost:5000
 
 This project is a monorepo (both client and backend folders under same directory) that was built on my own to demonstrate my knowledge of a full-stack application. Properly routed to the API backend, it does all CRUDL (create, read, update, delete, list) following best RESTful API practices. This project (had a blast creating this), taught me key concepts on how the front-end connects to the back-end, how API calls are made as a request to the backend, and received as a response in the client. I made 4 relational databases: for development, testing, preview, and production.
 
+### Additional Noteworthy Tools Used:
+
+#### Client
+
+1. Google Fonts for cursive font
+2. Bootstrap and Flexbox for CSS and icons
+3. Jest for testing
+4. React Router DOM Links and additional functions to properly route front-end
+5. Axios, fetch, useEffect to make calls to back-end API
+
+#### Server
+
+1. Postman to make requests to server
+2. dotenv to properly store and use env variables
+3. ElephantSQL to host relational databases
+4. DBeaver to check and view databases
+5. Knex to make calls to database to retrieve proper info, create and seed database with tables and data
+6. Jest for testing
+
 ## Steps
 
 I made 8 user stories, based on what a real world project would be like. Here the user stories and screenshots:
