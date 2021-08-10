@@ -4,11 +4,14 @@ A full-stack application built for owners who want to manage their reservations 
 
 ## Deployed Links / development Links
 
-### Production Links:
+### Production/Development Links & Endpoints:
+
+- on main dir, run => npm run start:dev for development (starts up both the front-end and back-end)
 
 #### Front-End
 
-https://restaurant-fullstack-frontend.herokuapp.com/dashboard
+Production: https://restaurant-fullstack-frontend.herokuapp.com/dashboard
+Development: localhost:3000
 
 - Endpoints:
   /dashboard (main homepage)
@@ -23,19 +26,17 @@ https://restaurant-fullstack-frontend.herokuapp.com/dashboard
 
 #### Back-End
 
-https://restaurant-fullstack-backend.herokuapp.com/tables
+Production: https://restaurant-fullstack-backend.herokuapp.com (There is no endpoint here, so will say "Path not found: /")
+Development: localhost:5000 (There is no endpoint here, so will say "Path not found: /")
 
-### Development:
+- Endpoints & CRUDL with RESTful API best practices:
+  /reservations (list, create)
+  /reservations/:reservation_id (read, update)
+  /reservations/:reservation_id/status (update)
 
-on main dir, run => npm run start:dev (starts up both the front-end and back-end)
-
-#### Front-End
-
-localhost:3000
-
-#### Back-End
-
-localhost:5000
+  /tables (list, create)
+  /tables/:table_id (read)
+  /tables/table_id/seat (update, delete)
 
 ## Context
 
