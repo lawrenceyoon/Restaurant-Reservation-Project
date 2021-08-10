@@ -10,6 +10,8 @@ import formatReservationTime from '../utils/format-reservation-time';
 import Footer from '../layout/Footer';
 
 const NewReservation = () => {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory ----- */
   const history = useHistory();
 
@@ -145,7 +147,7 @@ const NewReservation = () => {
     setFormErrors(runFormValidation);
     if (!runFormValidation.length) {
       try {
-        const url = 'http://localhost:5000/reservations';
+        const url = `${API_BASE_URL}/reservations`;
         const data = {
           data: formData,
         };

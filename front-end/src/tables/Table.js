@@ -6,6 +6,8 @@ import axios from 'axios';
 import './Table.css';
 
 const Table = ({ table }) => {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory ----- */
   const history = useHistory();
 
@@ -19,8 +21,8 @@ const Table = ({ table }) => {
     if (!confirm) return;
     try {
       // if ok is clicked, delete reservation_id from the table
-      const tableUrl = `http://localhost:5000/tables/${table_id}/seat`;
-      const reservationUrl = `http://localhost:5000/reservations/${reservation_id}/status`;
+      const tableUrl = `${API_BASE_URL}/tables/${table_id}/seat`;
+      const reservationUrl = `${API_BASE_URL}/reservations/${reservation_id}/status`;
       const statusData = {
         data: {
           status: 'finished',

@@ -6,6 +6,8 @@ import axios from 'axios';
 import './Reservation.css';
 
 const Reservation = ({ reservation }) => {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory ----- */
   const history = useHistory();
 
@@ -19,7 +21,7 @@ const Reservation = ({ reservation }) => {
     if (!confirm) return;
     // if ok is clicked, set status to cancelled
     try {
-      const reservationUrl = `http://localhost:5000/reservations/${reservation_id}/status`;
+      const reservationUrl = `${API_BASE_URL}/reservations/${reservation_id}/status`;
       const statusData = {
         data: {
           status: 'cancelled',

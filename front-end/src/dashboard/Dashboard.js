@@ -19,6 +19,8 @@ import Footer from '../layout/Footer';
  */
 
 function Dashboard() {
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   /* ----- useHistory, useQuery ----- */
   const history = useHistory();
   // if date props (today) is not passed in
@@ -58,7 +60,7 @@ function Dashboard() {
 
     async function loadTables() {
       try {
-        const response = await fetch('http://localhost:5000/tables', {
+        const response = await fetch(`${API_BASE_URL}/tables`, {
           signal: abortController.signal,
         });
         const tablesFromAPI = await response.json();
@@ -73,7 +75,7 @@ function Dashboard() {
     }
     loadTables();
     return () => abortController.abort();
-  }, []);
+  }, [API_BASE_URL]);
 
   const tablesData = tables.map((table) => (
     <Table key={table.table_id} table={table} />
