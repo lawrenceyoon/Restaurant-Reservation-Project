@@ -60,17 +60,21 @@ I made 8 user stories, based on what a real world project would be like. Here th
       ![previous, next, today buttons](/screenshot-imgs/previous-next-today-btns.png?raw=true)
    6. /reservations API has same validations as above and returns 400 when validation error occurs
 
-2. A restaurant manager waqnts to allow reservations to be created on a day we're open, so users do not accidentally create a reservation for days we are closed...
+2. A restaurant manager wants to allow reservations to be created on a day we're open, so users do not accidentally create a reservation for days we are closed...
 
-   1. /reservations/new page displays errors messages if reservation falls on a Tuesday (closed) or reservation date is in the past
+   1. /reservations/new page displays errors messages if reservation falls on a Tuesday (closed) or reservation date is in the past <br>
       ![closed on Tuesdays](/screenshot-imgs/closed-tuesdays.png?raw=true)
       ![today or future date](/screenshot-imgs/today-or-future.png?raw=true)
+   2. /reservations API has same validations as above and returns 400 when validation error occurs
 
 3. A restaurant manager wants to allow reservations to be created during business hours, up to 60 minutes before closing so users do not accidentally create reservation for a time we cannot accommodate...
+
    1. /reservations/new page displays errors messages if reservation time is before 10:30AM, after 9:30PM, reservation date + time are in the past (if date is for today, only time that's greater than now is allowed)
       ![between working hours](/screenshot-imgs/between-hours.png?raw=true)
       ![today, but later time](/screenshot-imgs/today-later-time.png?raw=true)
    2. /reservations API has same validations as above and returns 400 when validation error occurs
+
+4. asdf
 
 ## Tech Stack
 
